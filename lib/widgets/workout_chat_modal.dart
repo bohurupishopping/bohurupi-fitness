@@ -273,7 +273,6 @@ class _WorkoutChatModalState extends State<WorkoutChatModal> {
                                                   color: const Color(0xFF2D3142),
                                                   fontSize: 14,
                                                   height: 1.6,
-                                                  fontFamily: 'Noto Sans Bengali',
                                                 ),
                                               ),
                                             ),
