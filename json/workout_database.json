@@ -1,0 +1,592 @@
+[
+    {
+        "ID": "b_1",
+        "Day": "Back",
+        "Exercise": "Pull-Ups",
+        "Image": "https://mltorubdocw8.i.optimole.com/co-ZpyQ-ayLKxhoh/w:240/h:240/id:0c8a016d0b9373f218cdcf06ed948b8e/directUpload/pull-up-rep.gif",
+        "Instructions": "Muscle Targeted: ল্যাটিসিমাস ডর্সি, বাইসেপস।\nবার ধরে শরীরকে উপরে তোলার সময় শ্বাস টেনে নিন, চিবুক বার ছোঁয়ান এবং আবার নিচে নামুন। ধীরে ধীরে শুরু করে, পূর্ণতা অর্জনের দিকে মনোযোগ দিন",
+        "Tips": "Tip: শুরুতে ফর্মের দিকে মনোযোগ দিন, সংখ্যা নিয়ে চিন্তা না করে।",
+        "Sets": 3,
+        "Reps Range": "5-10"
+    },
+    {
+        "ID": "b_2",
+        "Day": "Back",
+        "Exercise": "Lat Pulldowns",
+        "Image": "https://mltorubdocw8.i.optimole.com/co-ZpyQ-kbrJz3XQ/w:240/h:240/id:afc4648632693d6489a283fbe609ec85/directUpload/cable-lat-pulldown.gif",
+        "Instructions": "Muscle Targeted: ল্যাটিসিমাস ডর্সি।\nমেশিনে বসে বারটি কাঁধ-প্রস্থের চেয়ে সামান্য বেশি চওড়া ধরে পিঠের দিকে টানুন। কনুই নিচে টেনে বার নামিয়ে বুকে আনুন এবং ধীরে ধীরে ছেড়ে দিন",
+        "Tips": "Tip: পেশীর সর্বোচ্চ প্রসারণ পেতে ধীরে কাজ করুন।",
+        "Sets": 3,
+        "Reps Range": "8-12"
+    },
+    {
+        "ID": "b_3",
+        "Day": "Back",
+        "Exercise": "Seated Cable Row",
+        "Image": "https://mltorubdocw8.i.optimole.com/co-ZpyQ-rW8AskhN/w:240/h:240/id:8e27f315046854a4a08d5fce8819c778/directUpload/cable-seated-row.gif",
+        "Instructions": "Muscle Targeted: মিডল ব্যাক, রোম্বয়েড।\nকেবল মেশিনে বসে বার ধরে পিঠ সোজা রেখে হাত টানুন। কনুই ভাঁজ করে বুকে নিয়ে আসুন এবং ধীরে ছেড়ে দিন",
+        "Tips": "Tip: কেবল হাত দিয়ে টানবেন না, পিঠের পেশী দিয়ে চাপ দিন।",
+        "Sets": 3,
+        "Reps Range": "8-13"
+    },
+    {
+        "ID": "b_4",
+        "Day": "Back",
+        "Exercise": "Barbell Rows/Bent-Over Row",
+        "Image": "https://mltorubdocw8.i.optimole.com/co-ZpyQ-nOdBH2L9/w:240/h:240/id:e3e7a0be5e6b9a1688f66919ad852a19/directUpload/barbell-bent-over-row.gif",
+        "Instructions": "Muscle Targeted: মিডল ব্যাক, ল্যাটিসিমাস ডর্সি।\nডাম্বেল বা বারবেল হাতে নিয়ে সামান্য সামনের দিকে ঝুঁকে যান, পিঠ সোজা রাখুন। হাতকে হাঁটুর পাশে রেখে ওজন উপরের দিকে টানুন, পিঠের মাঝের পেশীগুলি অনুভব করার চেষ্টা করুন",
+        "Tips": "Tip: ওজন বাড়ানোর আগে ফর্মে মনোযোগ দিন। বেশি ওজন পিঠের ব্যথার কারণ হতে পারে।",
+        "Sets": 3,
+        "Reps Range": "8-12"
+    },
+    {
+        "ID": "b_5",
+        "Day": "Back",
+        "Exercise": "Single-Arm Dumbbell Rows",
+        "Image": "https://mltorubdocw8.i.optimole.com/co-ZpyQ-WuGiWVLp/w:240/h:240/id:41ba1ceed245e88c573a1814de7746e7/directUpload/02921301-Dumbbell-Bent-over-Row-back-Back-360.gif",
+        "Instructions": "Muscle Targeted: মিডল ব্যাক, ল্যাটিসিমাস ডর্সি।\nএক হাত দিয়ে ডাম্বেল ধরে বেঞ্চের উপর একটি হাত ও হাঁটু রেখে ওজন উপরে টানুন। কনুই ভাঁজ করে পেশী সংকোচন করুন। পিঠের পেশীগুলিতে চাপ দিন, হাত দিয়ে টানবেন না",
+        "Tips": "Tip: ধীরে মুভমেন্ট করুন এবং প্রতিটি পুনরাবৃত্তিতে পেশীর সংকোচন অনুভব করুন।",
+        "Sets": 3,
+        "Reps Range": "10-12/arm"
+    },
+    {
+        "ID": "b_6",
+        "Day": "Back",
+        "Exercise": "Chest-Supported Seated Rows",
+        "Image": "https://mltorubdocw8.i.optimole.com/co-ZpyQ-O8ftm_Zb/w:240/h:240/id:d4b7bf8a949f6ddf8ce2d5f7676e6135/directUpload/Plate-Loaded-Seated-Row.gif",
+        "Instructions": "Muscle Targeted: মিডল ব্যাক, রোম্বয়েড।\nচেস্ট-সাপোর্টেড মেশিনে বসে ওজন টানুন। পিঠের পেশী দিয়ে টানুন, পিঠকে মেশিনের সাথে ঠেসে রাখুন। কনুই ভাঁজ করে ওজন বুকের দিকে আনুন",
+        "Tips": "Tip: পিঠে টান অনুভব না করলে মুভমেন্টের পরিমাণ কমান।",
+        "Sets": 3,
+        "Reps Range": "10-12"
+    },
+    {
+        "ID": "b_7",
+        "Day": "Back",
+        "Exercise": "Kneeling Cable High Rows",
+        "Image": "https://mltorubdocw8.i.optimole.com/co-ZpyQ-xIV5xm0w/w:240/h:240/id:163207535683384e2c85331b4e10771f/directUpload/cable-high-row-kneeling.gif",
+        "Instructions": "Muscle Targeted: ল্যাটিসিমাস ডর্সি, মিডল ব্যাক।\nকেবল মেশিনের সামনে হাঁটু গেড়ে বসুন, তারপর বার বা রশি কাঁধের উপরে থেকে নামিয়ে বুকের দিকে টানুন। পিঠ সোজা রেখে কনুই ভাঁজ করুন এবং ধীরে ধীরে বার ছেড়ে দিন",
+        "Tips": "Tip: পিঠ বাঁকাবেন না, শরীর স্থির রেখে পেশী দিয়ে টানুন।",
+        "Sets": 3,
+        "Reps Range": "10-12"
+    },
+    {
+        "ID": "b_8",
+        "Day": "Back",
+        "Exercise": "T-Bar Rows",
+        "Image": "https://mltorubdocw8.i.optimole.com/co-ZpyQ-zQ77N-nB/w:240/h:240/id:8b4ae0ebaac413234cd97a656856966a/directUpload/t-bar-row-muscles.gif",
+        "Instructions": "Muscle Targeted: মিডল ব্যাক, ল্যাটিসিমাস ডর্সি।\nটি-বার মেশিনে হাত দিয়ে শক্তভাবে ধরে ওজন টানুন। পিঠ সোজা রেখে মুভমেন্ট করুন এবং বারটি পেটের দিকে টানুন।",
+        "Tips": "Tip: ওজন বাড়ানোর আগে ফর্মের দিকে মনোযোগ দিন, যেন পিঠে চাপ না পড়ে।",
+        "Sets": 3,
+        "Reps Range": "8-10"
+    },
+    {
+        "ID": "b_9",
+        "Day": "Back",
+        "Exercise": "Dumbbell Row",
+        "Image": "https://mltorubdocw8.i.optimole.com/co-ZpyQ-qGWjoxt0/w:240/h:240/id:8264d0ebc4db79666a0b11f3634290d4/directUpload/Dumbbell-Row.gif",
+        "Instructions": "Muscle Targeted: মিডল ব্যাক, ল্যাটিসিমাস ডর্সি।\nডাম্বেল হাতে সামান্য সামনের দিকে ঝুঁকে ওজন পেটের দিকে টানুন। কনুই বাঁকিয়ে ধীরে টানুন এবং নামানোর সময় নিয়ন্ত্রণ বজায় রাখুন।",
+        "Tips": "Tip: কেবল হাতে টানার পরিবর্তে পিঠের পেশীগুলির উপর জোর দিন।",
+        "Sets": 3,
+        "Reps Range": "8-11"
+    },
+    {
+        "ID": "b_10",
+        "Day": "Back",
+        "Exercise": "Straight Arm Pulldown",
+        "Image": "https://mltorubdocw8.i.optimole.com/co-ZpyQ-HhA1KiLx/w:240/h:240/id:6a42f1c89de32eb0751e84e1e7790c61/directUpload/rope-straight-arm-pulldown.gif",
+        "Instructions": "Muscle Targeted: ল্যাটিসিমাস ডর্সি।\nকেবল মেশিনে দাঁড়িয়ে রশি বা বার ধরে হাত সোজা রেখে ধীরে বার নিচের দিকে টানুন। পিঠ সোজা রেখে ল্যাটিসিমাস ডর্সিকে টার্গেট করুন।",
+        "Tips": "Tip: হাত সোজা রাখুন এবং কনুই বাঁকাবেন না।",
+        "Sets": 3,
+        "Reps Range": "8-12"
+    },
+    {
+        "ID": "c_1",
+        "Day": "Chest",
+        "Exercise": "Pull-ups",
+        "Image": "https://mltorubdocw8.i.optimole.com/co-ZpyQ-ayLKxhoh/w:240/h:240/id:0c8a016d0b9373f218cdcf06ed948b8e/directUpload/pull-up-rep.gif",
+        "Instructions": "Muscle Targeted: বুকের উপরের এবং কাঁধের পেশী\nপুল-আপ শরীরের ওজন ব্যবহার করে বুকের উপরের অংশ এবং কাঁধের পেশী গঠনে সহায়ক। কাঁধ বরাবর হাত ধরে সম্পূর্ণরূপে ঝুলে তারপর শরীরকে উপরের দিকে টানুন। বুক বার বরাবর আনুন এবং ধীরে ধীরে নিচে নামুন",
+        "Tips": "Tip: প্রথমে পুরো শরীরটা নিয়ন্ত্রণ করা শিখুন। সময়ের সাথে প্রতিটি পুনরাবৃত্তির সময়শক্তি বাড়বে।",
+        "Sets": 3,
+        "Reps Range": "5-10"
+    },
+    {
+        "ID": "c_2",
+        "Day": "Chest",
+        "Exercise": "Dips",
+        "Image": "https://mltorubdocw8.i.optimole.com/co-ZpyQ-nm1eSvdF/w:240/h:240/id:b3e9048a9aeee802b4bbaf72ab8543eb/directUpload/tricep-dips.gif",
+        "Instructions": "Muscle Targeted: বুকের নিচের অংশ এবং ত্রাইসেপস\nডিপস শরীরের ওজনের মাধ্যমে বুক এবং ত্রাইসেপস কাজ করে। কাঁধের চওড়া ধরে বার ধরে শরীরকে নিচে নামিয়ে হাত দিয়ে উপরে তুলুন। বুক সামনের দিকে ঝুঁকিয়ে রাখুন",
+        "Tips": "Tip: শরীরের ভারসাম্য বজায় রেখে ধীরে ধীরে শুরু করুন।",
+        "Sets": 3,
+        "Reps Range": "8-12"
+    },
+    {
+        "ID": "c_3",
+        "Day": "Chest",
+        "Exercise": "Incline Chest Press",
+        "Image": "https://mltorubdocw8.i.optimole.com/co-ZpyQ-PwAyjqrE/w:240/h:240/id:6aed723c10fec6dafe27e374f482731a/directUpload/dumbbell-incline-reverse-grip-bench.gif",
+        "Instructions": "Muscle Targeted: বুকের উপরের পেশী\nইনক্লাইন বেঞ্চে শুয়ে, বারবেল বা ডাম্বেল ব্যবহার করে হাতের সাহায্যে উপরে তোলার অনুশীলন। ধীরে ধীরে ওজন বুকের কাছাকাছি আনুন এবং আবার উপরে তুলুন।",
+        "Tips": "Tip: ওজন সঠিকভাবে পরিচালনা করতে না পারলে হালকা ওজন দিয়ে শুরু করুন।",
+        "Sets": 3,
+        "Reps Range": "8-12"
+    },
+    {
+        "ID": "c_4",
+        "Day": "Chest",
+        "Exercise": "Machine Incline Chest Press",
+        "Image": "https://mltorubdocw8.i.optimole.com/co-ZpyQ-Uy69Osj3/w:240/h:240/id:ac469629872ca8d55bd2c604fe6723be/directUpload/barbell-incline-bench-press.gif",
+        "Instructions": "Muscle Targeted: বুকের উপরের পেশী\nমেশিন ব্যবহার করে বুকের উপরের অংশে চাপ সৃষ্টি করে ওয়ার্কআউট। ওজন সমানভাবে ধরে ধীরে ধীরে ঠেলুন",
+        "Tips": "",
+        "Sets": 3,
+        "Reps Range": "10-12"
+    },
+    {
+        "ID": "c_5",
+        "Day": "Chest",
+        "Exercise": "Machine Chest Press",
+        "Image": "https://mltorubdocw8.i.optimole.com/co-ZpyQ-kgR-zUb5/w:240/h:240/id:7ce3f66ee77bd03fbb0fef4b40ab632b/directUpload/chest-press-machine.gif",
+        "Instructions": "Muscle Targeted: পুরো বুকের পেশী\nমেশিন ব্যবহার করে সামনে থেকে ধাক্কা দেয়া, যা বুকের পুরো অংশকে লক্ষ্য করে।",
+        "Tips": "Tip: পেশীর উপর সর্বাধিক চাপ দিতে প্রতিটি রিপ ধীরে ধীরে করুন।",
+        "Sets": 3,
+        "Reps Range": "10-12"
+    },
+    {
+        "ID": "c_6",
+        "Day": "Chest",
+        "Exercise": "Flat Dumbbell Press",
+        "Image": "https://mltorubdocw8.i.optimole.com/co-ZpyQ-_AkM-e-Y/w:240/h:240/id:e33367eaf5b8453eef5768949e95a0c4/directUpload/barbell-banded-bench-press.gif",
+        "Instructions": "Muscle Targeted: বুকের মাঝের পেশী\nসমতল বেঞ্চে শুয়ে দুই হাতে ডাম্বেল ধরে ধীরে ধীরে বুকের স্তরে নামিয়ে এনে পরে উপরে তুলে ধরুন",
+        "Tips": "Tip: ডাম্বেল সমানভাবে না তুলে থাকলে আঘাতের সম্ভাবনা থাকে।",
+        "Sets": 3,
+        "Reps Range": "8-12"
+    },
+    {
+        "ID": "c_7",
+        "Day": "Chest",
+        "Exercise": "Butterfly Press",
+        "Image": "https://mltorubdocw8.i.optimole.com/co-ZpyQ-mj3mpYDq/w:240/h:240/id:aed44c4a833348225fa514c7c9e1ca0e/directUpload/Butterfly-Press.gif",
+        "Instructions": "Muscle Targeted: বুকের মাঝের পেশী\nমেশিনের সাহায্যে হাত দুইপাশে ছড়িয়ে রেখে একত্রিত করে বুকের মাঝের পেশী গঠনে সাহায্য করে।",
+        "Tips": "Tip: হাতের মুভমেন্টকে সম্পূর্ণ করতে বুকে চাপ বাড়ান।",
+        "Sets": 3,
+        "Reps Range": "10-12"
+    },
+    {
+        "ID": "c_8",
+        "Day": "Chest",
+        "Exercise": "Decline Chest Press",
+        "Image": "https://mltorubdocw8.i.optimole.com/co-ZpyQ-daiEg3rv/w:240/h:240/id:e4fa7b8b36e838d8a8272812e1ebefe8/directUpload/barbell-decline-bench-press.gif",
+        "Instructions": "Muscle Targeted: বুকের নিচের পেশী\nডিক্লাইন বেঞ্চে শুয়ে বারবেল বা ডাম্বেল ধরে বুকের নিচের অংশে কাজ করে।",
+        "Tips": "Tip: ভারসাম্য রাখতে ডিক্লাইন অ্যাঙ্গেলটা সঠিক রাখুন।",
+        "Sets": 3,
+        "Reps Range": "8-12"
+    },
+    {
+        "ID": "c_9",
+        "Day": "Chest",
+        "Exercise": "Push-ups",
+        "Image": "https://mltorubdocw8.i.optimole.com/co-ZpyQ-0VuNDy6q/w:240/h:240/id:ce19a9b646d2dc92264411958e13d417/directUpload/plyometric-push-ups.gif",
+        "Instructions": "Muscle Targeted: বুকের পুরো পেশী\nকোমর সোজা রেখে হাতের মাটি ধরে বুক নিচে নামিয়ে আবার উপরে তোলা, যা বুকের পুরো পেশী গঠনে সাহায্য করে",
+        "Tips": "Tip: শরীর সোজা রেখে বুকে চাপ বাড়ানোর চেষ্টা করুন।",
+        "Sets": 3,
+        "Reps Range": "8-12"
+    },
+    {
+        "ID": "lg_1",
+        "Day": "Leg",
+        "Exercise": "Squats Full",
+        "Image": "https://mltorubdocw8.i.optimole.com/co-ZpyQ-_qTdYKlN/w:240/h:240/id:652b36e8cf5195ed13fefb9e0f7b7958/directUpload/bodyweight-squat.gif",
+        "Instructions": "Muscle Targeted: উরু, পোঁদের পেশী, এবং পায়ের পেশী\nপায়ের চওড়ায় দাঁড়িয়ে কোমর নিচের দিকে নিয়ে এসে পুরো স্কোয়াট করুন। পায়ের পেশী এবং উরুতে চাপ দিয়ে আবার দাঁড়ান",
+        "Tips": "Tip: পিঠ সোজা রেখে বসার মতো করে নিচে নামতে হবে।",
+        "Sets": 3,
+        "Reps Range": "8-12"
+    },
+    {
+        "ID": "lg_2",
+        "Day": "Leg",
+        "Exercise": "Weighted Squats",
+        "Image": "https://mltorubdocw8.i.optimole.com/co-ZpyQ-G8RL-P8s/w:240/h:240/id:558eac09ddd5bf343dfee2705ca5e210/directUpload/barbell-full-squat.gif",
+        "Instructions": "Muscle Targeted: উরু, পোঁদ, এবং পায়ের পেশী\nডাম্বেল বা বারবেল নিয়ে নিয়মিত স্কোয়াট করুন। ওজন বাড়ানোর ফলে পেশীগুলোর উপর বেশি চাপ পড়ে",
+        "Tips": "Tip: খুব ভারী ওজন না দিয়ে ধীরে ধীরে ওজন বাড়ান।",
+        "Sets": 3,
+        "Reps Range": "8-12"
+    },
+    {
+        "ID": "lg_3",
+        "Day": "Leg",
+        "Exercise": "Dead Squat",
+        "Image": "https://mltorubdocw8.i.optimole.com/co-ZpyQ-3NORP4Jl/w:240/h:240/id:ffc81c3df50eb0c9d5e82062fc45ff8b/directUpload/dead-squat.gif",
+        "Instructions": "Muscle Targeted: উরু, পোঁদ এবং পিঠের নিচের পেশী\nডেডলিফটের মতো, স্কোয়াট শুরু করে পায়ের উপরের এবং পোঁদের পেশীতে কাজ করে। বারবেল বা ডাম্বেল ধরে নিচু হয়ে বসুন, তারপর দাঁড়ান",
+        "Tips": "Tip: পিঠের নিচের অংশ সোজা রেখে পেশীতে চাপ দিন।",
+        "Sets": 3,
+        "Reps Range": "8-12"
+    },
+    {
+        "ID": "lg_4",
+        "Day": "Leg",
+        "Exercise": "Leg Press",
+        "Image": "https://mltorubdocw8.i.optimole.com/co-ZpyQ-O1mKiGj4/w:240/h:240/id:60c592f15111b018110ddf077fb43386/directUpload/single-leg-leg-press.gif",
+        "Instructions": "Muscle Targeted: উরু এবং পায়ের পেশী\nলেগ প্রেস মেশিনে বসে পায়ে ওজন ঠেলুন। পুরো পায়ের পেশীগুলোতে কাজ করে।",
+        "Tips": "Tip: হাঁটু খুব বেশি সামনে আনলে আঘাতের সম্ভাবনা থাকে, তাই ওজন ঠেলার সময় ভারসাম্য বজায় রাখুন।",
+        "Sets": 3,
+        "Reps Range": "10-12"
+    },
+    {
+        "ID": "lg_5",
+        "Day": "Leg",
+        "Exercise": "Hamstring Leg Curls",
+        "Image": "https://mltorubdocw8.i.optimole.com/co-ZpyQ-uQcJmFY7/w:240/h:240/id:7d4942f60e925253a642d16d48388766/directUpload/lying-leg-curl.gif",
+        "Instructions": "Muscle Targeted: উরুর পিছনের পেশী (হ্যামস্ট্রিংস)\nলেগ কার্ল মেশিনে শুয়ে পায়ে ওজন ধরে ধীরে ধীরে হাঁটু ভাঁজ করুন। এটি উরুর পিছনের পেশীতে কাজ করে",
+        "Tips": "Tip: পুরো পায়ে চাপ দিতে ধীরে ধীরে ওজন তুলুন।",
+        "Sets": 3,
+        "Reps Range": "10-12"
+    },
+    {
+        "ID": "lg_6",
+        "Day": "Leg",
+        "Exercise": "Lunges",
+        "Image": "https://mltorubdocw8.i.optimole.com/co-ZpyQ-UhTGIIPp/w:240/h:240/id:137658ae6985ffef02b25c74cdfa8e08/directUpload/bodyweight-forward-lunge.gif",
+        "Instructions": "Muscle Targeted: উরু, পোঁদ, এবং পায়ের পেশী\nএক পা সামনে রেখে হাঁটু ভাঁজ করে নিচে যান। এটি পায়ের পুরো পেশীগুলোর উপর চাপ সৃষ্টি করে।",
+        "Tips": "Tip: ভারসাম্য ঠিক রাখতে ধীরে ধীরে মুভমেন্ট করুন।",
+        "Sets": 3,
+        "Reps Range": "8-10/leg"
+    },
+    {
+        "ID": "lg_7",
+        "Day": "Leg",
+        "Exercise": "Leg Extension",
+        "Image": "https://mltorubdocw8.i.optimole.com/co-ZpyQ-8o1t3ArL/w:240/h:240/id:aea6d9d83136958e4cb7312a8fee7e5f/directUpload/leg-extension-machine.gif",
+        "Instructions": "Muscle Targeted: উরুর সামনের পেশী\nলেগ এক্সটেনশন মেশিনে বসে পায়ের সাহায্যে ওজন তুলুন। এটি উরুর সামনের পেশীগুলোকে লক্ষ্য করে",
+        "Tips": "Tip: পেশীতে ভালো চাপ দিতে ধীরে ধীরে করতে হবে।",
+        "Sets": 3,
+        "Reps Range": "10-12"
+    },
+    {
+        "ID": "lg_8",
+        "Day": "Leg",
+        "Exercise": "Calves Raise",
+        "Image": "https://mltorubdocw8.i.optimole.com/co-ZpyQ-3psqKEzp/w:240/h:240/id:28c3bb0e0cc6810eb7daf66a30c7ed02/directUpload/dumbbell-calf-raise.gif",
+        "Instructions": "Muscle Targeted: পায়ের পেছনের (ক্যাফ) পেশী\nপায়ের আঙ্গুলের উপর ভর দিয়ে উপরে উঠুন এবং ধীরে ধীরে নিচে নামুন। পায়ের ক্যাফ পেশীগুলোকে লক্ষ্য করে এই অনুশীলন",
+        "Tips": "Tip: স্থির হয়ে ধীরে ধীরে উপরে উঠতে হবে, যেন পেশীগুলোতে পুরো চাপ পড়ে।",
+        "Sets": 3,
+        "Reps Range": "12-15"
+    },
+    {
+        "ID": "lg_9",
+        "Day": "Leg",
+        "Exercise": "Hip Thrust",
+        "Image": "https://mltorubdocw8.i.optimole.com/co-ZpyQ-DEOorvSy/w:240/h:240/id:4f40063000179fc61b5c26be7247ba6c/directUpload/dumbbell-hip-thrust.gif",
+        "Instructions": "Muscle Targeted: পোঁদের পেশী এবং কোমরের নিচের অংশ\nবেঞ্চের পাশে শুয়ে পোঁদ উপরে তুলুন এবং নিচে নামান। পোঁদ এবং কোমরের নিচের পেশীগুলোতে কাজ করে।",
+        "Tips": "Tip: মুভমেন্টের সময় পোঁদ সম্পূর্ণ উপরে উঠিয়ে রাখতে হবে।",
+        "Sets": 3,
+        "Reps Range": "10-12"
+    },
+    {
+        "ID": "bc_1",
+        "Day": "Biceps",
+        "Exercise": "Pull Ups",
+        "Image": "https://mltorubdocw8.i.optimole.com/co-ZpyQ-ayLKxhoh/w:240/h:240/id:0c8a016d0b9373f218cdcf06ed948b8e/directUpload/pull-up-rep.gif",
+        "Instructions": "Muscle Targeted: বাইসেপস এবং পিঠের উপরের পেশী\nপুল-আপ হাতের বাইসেপস এবং পিঠের উপরের অংশকে লক্ষ্য করে। কাঁধ বরাবর বার ধরে ঝুলে পড়ুন এবং ধীরে ধীরে নিজের শরীরকে বার পর্যন্ত টেনে নিন।",
+        "Tips": "Tip: পুরো বাইসেপসে চাপ দিতে হাতের গ্রিপ ঠিক রাখুন।",
+        "Sets": 3,
+        "Reps Range": "5-10"
+    },
+    {
+        "ID": "bc_2",
+        "Day": "Biceps",
+        "Exercise": "Diamond Push Up",
+        "Image": "https://mltorubdocw8.i.optimole.com/co-ZpyQ-ZuoosYlr/w:240/h:240/id:1085eb4b23f2e803d3be77f54093c4c1/directUpload/diamond-pushup.gif",
+        "Instructions": "Muscle Targeted: বাইসেপস এবং ত্রাইসেপস\nহাতের আঙুলগুলো একত্রিত করে ডায়মন্ড আকৃতি তৈরি করে পুশ-আপ করুন, যা বাইসেপস এবং ত্রাইসেপসকে লক্ষ্য করে। শরীর সোজা রেখে ধীরে ধীরে বুককে নিচে নিয়ে আসুন এবং আবার উপরে উঠুন।",
+        "Tips": "Tip: পুরো শরীরটাকে সোজা রেখে পেশীতে চাপ দিন।",
+        "Sets": 3,
+        "Reps Range": "8-12"
+    },
+    {
+        "ID": "bc_3",
+        "Day": "Biceps",
+        "Exercise": "Biceps Curling",
+        "Image": "https://mltorubdocw8.i.optimole.com/co-ZpyQ-VPYhLUUT/w:240/h:240/id:1d0b3bda51e7b73ee67706b1165ec687/directUpload/ez-bar-reverse-curl.gif",
+        "Instructions": "Muscle Targeted: বাইসেপস\nডাম্বেল বা বারবেল ধরে হাতের সাহায্যে ধীরে ধীরে ওজন উপরের দিকে তুলুন এবং ধীরে নামান। বাইসেপসকে শক্তিশালী করে এই অনুশীলন।",
+        "Tips": "Tip: কনুইগুলো সঠিক অবস্থানে ধরে রাখতে হবে, নাহলে ব্যালেন্স নষ্ট হতে পারে।",
+        "Sets": 3,
+        "Reps Range": "10-12"
+    },
+    {
+        "ID": "bc_4",
+        "Day": "Biceps",
+        "Exercise": "Skull Crusher",
+        "Image": "https://mltorubdocw8.i.optimole.com/co-ZpyQ-EnrVuV8e/w:240/h:240/id:b296ea69016218ded5c6961795c467d5/directUpload/flat-bench-skull-crusher.gif",
+        "Instructions": "Muscle Targeted: ত্রাইসেপস (প্রধানত), কিছুটা বাইসেপস\nবেঞ্চে শুয়ে বারবেল বা ডাম্বেল নিয়ে মাথার দিকে ধীরে ধীরে নামিয়ে এনে আবার উপরে তুলুন। মূলত ত্রাইসেপসের জন্য হলেও কিছুটা বাইসেপসেও চাপ পড়ে।",
+        "Tips": "Tip: ধীরে ধীরে ওজন নিয়ন্ত্রণ করুন, নাহলে আঘাতের সম্ভাবনা থাকে।",
+        "Sets": 3,
+        "Reps Range": "10-12"
+    },
+    {
+        "ID": "bc_5",
+        "Day": "Biceps",
+        "Exercise": "Hammer Curl",
+        "Image": "https://mltorubdocw8.i.optimole.com/co-ZpyQ-sGp0VI-L/w:240/h:240/id:9ff32862813156c0809bf5e0f14fb78c/directUpload/dumbbell-hammer-curl.gif",
+        "Instructions": "Muscle Targeted: বাইসেপস এবং ব্র্যাকিওরাডিয়ালিস (হাতের বাহুর পাশের পেশী)\nডাম্বেল ধরে হাত সামনের দিকে রেখে ধীরে ধীরে ওজন তুলুন এবং নামান। হাতের ব্র্যাকিওরাডিয়ালিস এবং বাইসেপসে কাজ করে।",
+        "Tips": "Tip: হাতের মুভমেন্ট সঠিকভাবে করতে হবে, যাতে কনুই নিয়ন্ত্রণে থাকে।",
+        "Sets": 3,
+        "Reps Range": "10-12"
+    },
+    {
+        "ID": "bc_6",
+        "Day": "Biceps",
+        "Exercise": "Dumbbell Extension",
+        "Image": "https://mltorubdocw8.i.optimole.com/co-ZpyQ-CqiB4GBl/w:240/h:240/id:2a3a220d2df3d1b7969bf3f58a1112db/directUpload/DumbbellExtension.gif",
+        "Instructions": "Muscle Targeted: ত্রাইসেপস\nএক হাতে ডাম্বেল ধরে মাথার উপরে নিয়ে যান, ধীরে ধীরে ওজন নিচের দিকে নামিয়ে পুনরায় উপরে তুলুন।",
+        "Tips": "Tip: হাত সোজা রেখে ধীরে ধীরে মুভমেন্ট করতে হবে।",
+        "Sets": 3,
+        "Reps Range": "10-12"
+    },
+    {
+        "ID": "bc_7",
+        "Day": "Biceps",
+        "Exercise": "Alternate Dumbbell Curl",
+        "Image": "https://mltorubdocw8.i.optimole.com/co-ZpyQ-q4kb-c22/w:240/h:240/id:d5194982dfa7cfbed528aa19e3cb9c3f/directUpload/Alternate-Dumbbell-Curl.gif",
+        "Instructions": "Muscle Targeted: বাইসেপস\nএকবারে এক হাতে ডাম্বেল ধরে হাতের বাইসেপসের সাহায্যে ধীরে ধীরে তুলুন এবং নামান। এক হাত করে ক্রমান্বয়ে করুন।",
+        "Tips": "Tip: ধীরে ধীরে এবং নিয়ন্ত্রিতভাবে করতে হবে।",
+        "Sets": 3,
+        "Reps Range": "10-12/arm"
+    },
+    {
+        "ID": "bc_8",
+        "Day": "Biceps",
+        "Exercise": "Triceps Dip",
+        "Image": "https://mltorubdocw8.i.optimole.com/co-ZpyQ-aRHu4yW2/w:240/h:240/id:f9fdb6832677a42aebce4df2d6b1e460/directUpload/Triceps-Dip.gif",
+        "Instructions": "Muscle Targeted: ত্রাইসেপস\nএকটি বেঞ্চ বা সমতল স্থানে বসে, হাতের সাহায্যে শরীরকে উপরে তুলে ত্রাইসেপসের উপর চাপ দিন।",
+        "Tips": "Tip: পা মাটিতে রাখলে সহজ হবে, এবং শরীরকে সামনের দিকে ঝুঁকিয়ে করলে ত্রাইসেপসে ভালো চাপ পড়ে।",
+        "Sets": 3,
+        "Reps Range": "8-12"
+    },
+    {
+        "ID": "bc_9",
+        "Day": "Biceps",
+        "Exercise": "Cable Curl",
+        "Image": "https://mltorubdocw8.i.optimole.com/co-ZpyQ-ndrEiIcU/w:240/h:240/id:506c64f5dededcda0afe231da8271cb2/directUpload/Cable-Curl.gif",
+        "Instructions": "Muscle Targeted: বাইসেপস\nক্যাবল মেশিনে দড়ি ধরে বাইসেপস দিয়ে ওজন টানুন। এই অনুশীলন সরাসরি বাইসেপসকে লক্ষ্য করে।",
+        "Tips": "Tip: মেশিনের মুভমেন্ট ধীরে ধীরে নিয়ন্ত্রণ করুন।",
+        "Sets": 3,
+        "Reps Range": "10-12"
+    },
+    {
+        "ID": "sl_1",
+        "Day": "Shoulder",
+        "Exercise": "Pull-up",
+        "Image": "https://mltorubdocw8.i.optimole.com/co-ZpyQ-ayLKxhoh/w:240/h:240/id:0c8a016d0b9373f218cdcf06ed948b8e/directUpload/pull-up-rep.gif",
+        "Instructions": "Muscle Targeted: কাঁধের উপরের পেশী এবং পিঠ\nপুল-আপ কাঁধ এবং পিঠের উপরের পেশী গঠনে সাহায্য করে। কাঁধের চওড়া ধরে হাত দিয়ে পুরো শরীরের ওজন টেনে উপরে আনুন এবং ধীরে ধীরে নিচে নামুন।",
+        "Tips": "Tip: পেশীতে পুরো চাপ দিতে ধীরে ধীরে শরীর তুলুন।",
+        "Sets": 3,
+        "Reps Range": "5-10"
+    },
+    {
+        "ID": "sl_2",
+        "Day": "Shoulder",
+        "Exercise": "Parallel Bar Dip",
+        "Image": "https://mltorubdocw8.i.optimole.com/co-ZpyQ-PsfXNNFc/w:240/h:240/id:e5c88100c2e8f830ea2fa52d9e0ea054/directUpload/parallel-bar-tricep-dips.gif",
+        "Instructions": "Muscle Targeted: কাঁধ এবং ত্রাইসেপস\nপারালেল বার ধরে শরীরকে নিচে নামিয়ে আবার হাত দিয়ে উপরে তোলা। এই অনুশীলন কাঁধের সামনে অংশ এবং ত্রাইসেপসে চাপ দেয়।",
+        "Tips": "Tip: শরীর সামনের দিকে ঝুঁকিয়ে ব্যালেন্স বজায় রাখুন।",
+        "Sets": 3,
+        "Reps Range": "8-12"
+    },
+    {
+        "ID": "sl_3",
+        "Day": "Shoulder",
+        "Exercise": "Military Press",
+        "Image": "https://mltorubdocw8.i.optimole.com/co-ZpyQ-ADJvr7nc/w:240/h:240/id:4e8dd16f48f4d97ca67489bef9aa3a59/directUpload/seated-overhead-press.gif",
+        "Instructions": "Muscle Targeted: কাঁধের সামনের এবং পাশের পেশী\nবারবেল ধরে, মাথার উপর দিয়ে ধীরে ধীরে ওজন তুলুন এবং আবার নিচে নামান। এই অনুশীলন কাঁধের সামনের অংশকে লক্ষ্য করে।",
+        "Tips": "Tip: ব্যাক সাপোর্ট ব্যবহার করলে কাঁধের উপর চাপ কমে আসতে পারে।",
+        "Sets": 3,
+        "Reps Range": "8-12"
+    },
+    {
+        "ID": "sl_4",
+        "Day": "Shoulder",
+        "Exercise": "Shoulder Press",
+        "Image": "https://mltorubdocw8.i.optimole.com/co-ZpyQ-NPH3uV4T/w:240/h:240/id:4a4da2077b740ab1362a5ad436b3c111/directUpload/arnold-presses.gif",
+        "Instructions": "Muscle Targeted: কাঁধের সামনের এবং পাশের পেশী\nডাম্বেল বা মেশিন ব্যবহার করে মাথার উপরে তুলুন। বুক সোজা রেখে ধীরে ধীরে কাঁধের উপর ওজন তুলুন এবং নামান।",
+        "Tips": "Tip: মেশিনে সঠিক ফর্ম বজায় রাখার চেষ্টা করুন, যাতে কাঁধের পেশীতে সঠিক চাপ পড়ে।",
+        "Sets": 3,
+        "Reps Range": "8-12"
+    },
+    {
+        "ID": "sl_5",
+        "Day": "Shoulder",
+        "Exercise": "Lateral Raise",
+        "Image": "https://mltorubdocw8.i.optimole.com/co-ZpyQ-9zfmhFlO/w:240/h:240/id:94334a31c634620184cd5292203d7b4e/directUpload/dumbbell-lateral-raise.gif",
+        "Instructions": "Muscle Targeted: কাঁধের পাশের পেশী\nদুই হাতে ডাম্বেল নিয়ে হাতগুলো শরীরের পাশে রেখে ধীরে ধীরে পাশের দিকে তোলার অনুশীলন। এই অনুশীলন কাঁধের পাশের পেশী শক্তিশালী করে।",
+        "Tips": "Tip: খুব বেশি ওজন না নিয়ে সঠিক ফর্ম বজায় রাখুন।",
+        "Sets": 3,
+        "Reps Range": "10-12"
+    },
+    {
+        "ID": "sl_6",
+        "Day": "Shoulder",
+        "Exercise": "Front Raise",
+        "Image": "https://mltorubdocw8.i.optimole.com/co-ZpyQ-zUEq7rMO/w:240/h:240/id:c00f9e8d46738a92999b6f6e56252423/directUpload/cable-front-raise-movement.gif",
+        "Instructions": "Muscle Targeted: কাঁধের সামনের পেশী\nডাম্বেল হাতে সামনে ধরে ধীরে ধীরে শরীরের সামনের দিকে তুলুন এবং নামান।",
+        "Tips": "Tip: খুব দ্রুত তুলতে গেলে কাঁধের পেশীতে আঘাতের সম্ভাবনা থাকে।",
+        "Sets": 3,
+        "Reps Range": "10-12"
+    },
+    {
+        "ID": "ab_1",
+        "Day": "Abs",
+        "Exercise": "Plank",
+        "Image": "https://mltorubdocw8.i.optimole.com/co-ZpyQ-qjX3TH6I/w:240/h:240/id:cb49832cbf24720276df2becca5f3522/directUpload/plank.gif",
+        "Instructions": "Muscle Targeted: পেটের পেশী, কোমর এবং পিঠ।\nপেটের উপর ভর দিয়ে শরীর সোজা রেখে প্ল্যাঙ্ক অবস্থানে থাকুন। এটি পেটের গভীর পেশীগুলোতে কাজ করে।",
+        "Tips": "Tip: শরীর সোজা রাখার দিকে নজর দিন, যেন কোমরে চাপ না পড়ে।",
+        "Sets": 3,
+        "Reps Range": "30-60 sec"
+    },
+    {
+        "ID": "ab_2",
+        "Day": "Abs",
+        "Exercise": "Plank Twist",
+        "Image": "https://mltorubdocw8.i.optimole.com/co-ZpyQ-7go1EW8K/w:240/h:240/id:54c0173a53272d38f8bf59e7b27f8c45/directUpload/side-plank-muscles.gif",
+        "Instructions": "Muscle Targeted: পেটের পাশে (অ্যাব্লিকস) এবং মূল পেশী।\nপ্ল্যাঙ্ক অবস্থান থেকে কোমর ঘুরিয়ে একপাশ থেকে অন্যপাশে নিয়ে যান। এটি পেটের অ্যাব্লিকস পেশীগুলোকে লক্ষ্য করে।",
+        "Tips": "Tip: মুভমেন্ট ধীরে ধীরে করুন, যাতে পুরো পেশীতে চাপ পড়ে।",
+        "Sets": 3,
+        "Reps Range": "10-15/side"
+    },
+    {
+        "ID": "ab_3",
+        "Day": "Abs",
+        "Exercise": "Crunches",
+        "Image": "https://mltorubdocw8.i.optimole.com/co-ZpyQ-CmfcVs3G/w:240/h:240/id:8d902b4e123bcf76801b4bd78f651536/directUpload/crunch.gif",
+        "Instructions": "Muscle Targeted: পেটের সামনের পেশী।\nশুয়ে থেকে হাঁটু ভাঁজ করে, পেটের পেশী দিয়ে ধীরে ধীরে শরীরের উপরের অংশ তুলুন। এটি পেটের উপরের অংশে কাজ করে।",
+        "Tips": "Tip: ঘাড়ে চাপ না দিয়ে পেটের পেশীতে ফোকাস করুন।",
+        "Sets": 3,
+        "Reps Range": "15-20"
+    },
+    {
+        "ID": "ab_4",
+        "Day": "Abs",
+        "Exercise": "Side Crunches",
+        "Image": "https://mltorubdocw8.i.optimole.com/co-ZpyQ-ympetwg5/w:240/h:240/id:6b1618ae39b634f259b4a58fb513dde0/directUpload/side-crunch.gif",
+        "Instructions": "Muscle Targeted: পেটের পাশের পেশী (অ্যাব্লিকস)।\nশুয়ে থেকে একদিকে ঘুরে পেটের পাশের পেশী ব্যবহার করে শরীরের উপরের অংশ তুলুন",
+        "Tips": "Tip: মুভমেন্ট ধীরে ধীরে করে অ্যাব্লিকস পেশীতে ভালো চাপ দিন।",
+        "Sets": 3,
+        "Reps Range": "12-15/side"
+    },
+    {
+        "ID": "ab_5",
+        "Day": "Abs",
+        "Exercise": "Russian Twist",
+        "Image": "https://mltorubdocw8.i.optimole.com/co-ZpyQ-Q_NbNZC_/w:240/h:240/id:d6ca8b0424a6efd691de63b25335f605/directUpload/russian-twist.gif",
+        "Instructions": "Muscle Targeted: পেটের অ্যাব্লিকস এবং মূল পেশী।\nমেঝেতে বসে, পা তুলুন এবং ধীরে ধীরে শরীরের উপরের অংশ একপাশ থেকে অন্যপাশে ঘুরিয়ে নিন। এটি পেটের পাশের পেশীতে চাপ দেয়।",
+        "Tips": "Tip: পা মাটি থেকে তুললে পেটের পেশীগুলো বেশি কাজে লাগে।",
+        "Sets": 3,
+        "Reps Range": "15-20/side"
+    },
+    {
+        "ID": "ab_6",
+        "Day": "Abs",
+        "Exercise": "Knee Raise",
+        "Image": "https://mltorubdocw8.i.optimole.com/co-ZpyQ-v4ZA5-Va/w:240/h:240/id:489d2db71e65389d7c2be0e5348fd232/directUpload/captains-chair-knee-raise.gif",
+        "Instructions": "Muscle Targeted: পেটের নিচের পেশী।\nপিঠের উপর ভর দিয়ে শুয়ে, পা ধীরে ধীরে উপরে তুলে হাঁটু ভাঁজ করুন। এটি পেটের নিচের অংশে কাজ করে।",
+        "Tips": "Tip: ধীরে ধীরে পা তুলুন এবং পেশীতে চাপ দিন।",
+        "Sets": 3,
+        "Reps Range": "10-12"
+    },
+    {
+        "ID": "ab_7",
+        "Day": "Abs",
+        "Exercise": "The Decline Crunch",
+        "Image": "https://mltorubdocw8.i.optimole.com/co-ZpyQ-_ippzJKS/w:240/h:240/id:4f085e7c97329ba03c225678ed9bb12a/directUpload/decline-crunch.gif",
+        "Instructions": "Muscle Targeted: পেটের সামনের এবং উপরের পেশী।\nডিক্লাইন বেঞ্চে শুয়ে থেকে পেটের সাহায্যে শরীরের উপরের অংশ তুলুন। এটি পেটের উপরের পেশীতে বেশি চাপ সৃষ্টি করে।",
+        "Tips": "Tip: খুব দ্রুত না করে ধীরে ধীরে মুভমেন্ট করুন।",
+        "Sets": 3,
+        "Reps Range": "10-12"
+    },
+    {
+        "ID": "ab_8",
+        "Day": "Abs",
+        "Exercise": "Hanging Raise",
+        "Image": "https://mltorubdocw8.i.optimole.com/co-ZpyQ-Pjh_gsbg/w:240/h:240/id:bb1533432e543d685dde4d7c7d425396/directUpload/hanging-leg-raise-movement.gif",
+        "Instructions": "Muscle Targeted: পেটের নিচের পেশী এবং কোমর।\nবার ধরে ঝুলে থেকে পা তুলুন। এটি পেটের নিচের পেশী এবং কোমরের পেশীতে কাজ করে",
+        "Tips": "Tip: পা তোলার সময় ধীরে ধীরে করতে হবে, যেন পেশীতে চাপ পড়ে।",
+        "Sets": 3,
+        "Reps Range": "8-10"
+    },
+    {
+        "ID": "ab_9",
+        "Day": "Abs",
+        "Exercise": "Bicycle Crunches",
+        "Image": "https://mltorubdocw8.i.optimole.com/co-ZpyQ-Elwagk0S/w:240/h:240/id:aef99e765df91bb6b6e568bf56c74a5d/directUpload/bicycle-crunch-movement.gif",
+        "Instructions": "Muscle Targeted: পেটের সামনের এবং পাশের পেশী।\nমাটিতে শুয়ে থেকে, এক হাঁটু ভাঁজ করে তার দিকে বিপরীত হাতের কনুই নিয়ে যান। এই অনুশীলন পেটের সামনের এবং অ্যাব্লিকস পেশীগুলোতে কাজ করে।",
+        "Tips": "Tip: পুরো শরীরের ভারসাম্য ঠিক রেখে ধীরে ধীরে করতে হবে।",
+        "Sets": 3,
+        "Reps Range": "15-20/side"
+    },
+    {
+        "ID": "b_11",
+        "Day": "Back",
+        "Exercise": "Deadlift",
+        "Image": "https://mltorubdocw8.i.optimole.com/co-ZpyQ-Sg7PO_y4/w:240/h:240/id:8890c437ccede9ab67465a2162ff5888/directUpload/barbell-deadlift-front-view.gif",
+        "Instructions": "Muscle Targeted: পেছনের লোয়ার ব্যাক, হ্যামস্ট্রিং, গ্লুটস।\nডেডলিফট করার সময়, বারবেল কাঁধ-প্রস্থের সমান ধরুন। কোমর সোজা রেখে হাঁটু সামান্য বেঁকিয়ে নিচের দিকে যান। পিঠকে বাঁকিয়ে ফেলবেন না, মেরুদণ্ড সোজা রাখার চেষ্টা করুন। ধীরে ধীরে দাঁড়িয়ে বারবেল উঠান এবং পুনরাবৃত্তি করুন।",
+        "Tips": "Tip: ভারসাম্য বজায় রাখতে পা দৃঢ়ভাবে মাটিতে রাখুন।",
+        "Sets": 3,
+        "Reps Range": "8-14"
+    },
+    {
+        "ID": "c_10",
+        "Day": "Chest",
+        "Exercise": "Cable Crossover",
+        "Image": "https://mltorubdocw8.i.optimole.com/co-ZpyQ-DXf4BJYr/w:240/h:240/id:86f863b7ff73fe95de0f6768df598331/directUpload/Cable-Crossover.gif",
+        "Instructions": "Muscle Targeted: বুকের পেশী\nক্যাবল মেশিনে দাঁড়িয়ে দুটো হ্যান্ডেল ধরে হাত একত্রিত করে বুকের দিকে টানুন। বুকের পেশীর সম্পূর্ণ অংশে চাপ পড়ে।",
+        "Tips": "Tip: দুই পাশে সমানভাবে টানুন, যেন ভারসাম্য ঠিক থাকে।",
+        "Sets": 3,
+        "Reps Range": "8-12"
+    },
+    {
+        "ID": "sl_7",
+        "Day": "Shoulder",
+        "Exercise": "Arnold Press",
+        "Image": "https://mltorubdocw8.i.optimole.com/co-ZpyQ-XbBJU1V5/w:240/h:240/id:0957fe363551dba63d141cf1e8f025d0/directUpload/Arnold-Press.gif",
+        "Instructions": "Muscle Targeted: কাঁধের সামনের, পাশের এবং পেছনের পেশী\nডাম্বেল ধরে ঘুরিয়ে মাথার উপরে তুলুন, যেভাবে আর্নল্ড শোয়ার্জনেগার এই অনুশীলন করতেন। কাঁধের পুরো অংশে কাজ করে।",
+        "Tips": "Tip: মুভমেন্ট ধীরে ধীরে করতে হবে, না হলে আঘাতের সম্ভাবনা থাকে।",
+        "Sets": 3,
+        "Reps Range": "10-12"
+    },
+    {
+        "ID": "sl_8",
+        "Day": "Shoulder",
+        "Exercise": "Upright Row",
+        "Image": "https://mltorubdocw8.i.optimole.com/co-ZpyQ-I8OnE6rT/w:240/h:240/id:ca4e6293760a402553f4e6a48d218659/directUpload/Upright-Row.gif",
+        "Instructions": "Muscle Targeted: কাঁধের উপরের পেশী এবং ট্র্যাপ\nবারবেল ধরে কাঁধের দিকে টানুন, কনুই উপর দিকে রাখুন। এই অনুশীলন কাঁধের উপরের এবং ট্র্যাপস পেশীকে লক্ষ্য করে।",
+        "Tips": "Tip: কনুই বেশি উঁচুতে তুলতে গেলে কাঁধে চাপ পড়তে পারে, তাই সঠিক ফর্ম বজায় রাখুন।",
+        "Sets": 3,
+        "Reps Range": "10-12"
+    },
+    {
+        "ID": "sl_9",
+        "Day": "Shoulder",
+        "Exercise": "Face Pull",
+        "Image": "https://mltorubdocw8.i.optimole.com/co-ZpyQ-oCTDzkfb/w:240/h:240/id:1f468ab986baa8b2208bea944987f2cb/directUpload/Face-Pull.gif",
+        "Instructions": "Muscle Targeted: কাঁধের পেছনের পেশী\nক্যাবল মেশিনে দড়ি ধরে নিজের দিকে টানুন, কাঁধের পেছনের অংশকে লক্ষ্য করে। পেশীগুলো টানটান রাখুন।",
+        "Tips": "Tip: পেশীতে পুরো চাপ দিতে ধীরে ধীরে টানুন।",
+        "Sets": 3,
+        "Reps Range": "10-12"
+    },
+    {
+        "ID": "sl_10",
+        "Day": "Shoulder",
+        "Exercise": "Bent Over Reverse Fly",
+        "Image": "https://mltorubdocw8.i.optimole.com/co-ZpyQ-blWx0FPn/w:240/h:240/id:269c15079703b2e2aadde559c201a873/directUpload/Bent-Over-Reverse-Fly.gif",
+        "Instructions": "Muscle Targeted: কাঁধের পেছনের পেশী\nডাম্বেল হাতে সামনের দিকে ঝুঁকে ধীরে ধীরে হাত দুইপাশে ছড়িয়ে নিন। কাঁধের পেছনের পেশী গঠনে সাহায্য করে।",
+        "Tips": "Tip: শরীর সোজা রেখে ধীরে ধীরে হাত তুলুন।",
+        "Sets": 3,
+        "Reps Range": "10-12"
+    },
+    {
+        "ID": "lg_10",
+        "Day": "Leg",
+        "Exercise": "Sumo Squat",
+        "Image": "https://mltorubdocw8.i.optimole.com/co-ZpyQ-wgDMoY19/w:240/h:240/id:c4621abff68bfb8851aa2afe446713dc/directUpload/Sumo-Squat.gif",
+        "Instructions": "Muscle Targeted: উরুর ভিতরের পেশী এবং পোঁদ\nপা চওড়া করে দাঁড়িয়ে নিচু হয়ে বসুন। উরুর ভিতরের পেশীগুলোতে বেশি চাপ পড়ে।",
+        "Tips": "Tip: মুভমেন্ট ধীরে ধীরে করতে হবে, যেন পেশীতে ভালো চাপ পড়ে।",
+        "Sets": 3,
+        "Reps Range": "10-12"
+    }
+]
