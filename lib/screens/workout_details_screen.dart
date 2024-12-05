@@ -46,9 +46,12 @@ class _WorkoutDetailsScreenState extends State<WorkoutDetailsScreen> with Single
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    
     return Scaffold(
       backgroundColor: const Color(0xFFF5F6FA),
       body: Container(
+        height: size.height,
         decoration: BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topLeft,
@@ -61,15 +64,9 @@ class _WorkoutDetailsScreenState extends State<WorkoutDetailsScreen> with Single
         ),
         child: Stack(
           children: [
-            SingleChildScrollView(
-              physics: const BouncingScrollPhysics(),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  _buildMainContent(context),
-                ].animate(interval: 200.ms).fadeIn(duration: 500.ms).slideX(),
-              ),
-            ),
+            // Main content
+            _buildMainContent(context),
+            
             // Back button overlay
             SafeArea(
               child: Padding(
@@ -105,232 +102,243 @@ class _WorkoutDetailsScreenState extends State<WorkoutDetailsScreen> with Single
   }
 
   Widget _buildMainContent(BuildContext context) {
-    return Stack(
-      children: [
-        Container(
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: const BorderRadius.vertical(
-              top: Radius.circular(32),
-            ),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withOpacity(0.05),
-                blurRadius: 20,
-                offset: const Offset(0, -5),
+    final size = MediaQuery.of(context).size;
+    final imageHeight = size.height * 0.35; // Reduced to 35% of screen height
+    final contentPadding = size.height * 0.02;
+
+    return Container(
+      height: size.height,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: const BorderRadius.vertical(
+          top: Radius.circular(32),
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.05),
+            blurRadius: 20,
+            offset: const Offset(0, -5),
+          ),
+        ],
+      ),
+      child: Stack(
+        clipBehavior: Clip.none,
+        children: [
+          // Main scrollable content
+          CustomScrollView(
+            physics: const BouncingScrollPhysics(),
+            slivers: [
+              // Image section
+              SliverToBoxAdapter(
+                child: SizedBox(
+                  height: imageHeight,
+                  child: _buildMainImage(context),
+                ),
+              ),
+              // Space for floating title
+              SliverToBoxAdapter(
+                child: SizedBox(height: size.height * 0.08),
+              ),
+              // Instructions and next workouts
+              SliverPadding(
+                padding: EdgeInsets.fromLTRB(20, 0, 20, size.height * 0.12),
+                sliver: SliverList(
+                  delegate: SliverChildListDelegate([
+                    _buildInstructionsCard(context),
+                    SizedBox(height: contentPadding),
+                    _buildNextWorkouts(context),
+                  ]),
+                ),
               ),
             ],
           ),
-          child: Stack(
-            clipBehavior: Clip.none,
-            children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  _buildMainImage(context),
-                  const SizedBox(height: 75),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        _buildInstructionsCard(context),
-                        const SizedBox(height: 16),
-                        _buildNextWorkouts(context),
-                      ],
-                    ),
+          // Exercise title card
+          Positioned(
+            top: imageHeight - 60,
+            left: 20,
+            right: 20,
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: [
+                    const Color(0xFF4ECDC4).withOpacity(0.9),
+                    const Color(0xFF45B7D1).withOpacity(0.9),
+                  ],
+                ),
+                borderRadius: BorderRadius.circular(20),
+                boxShadow: [
+                  BoxShadow(
+                    color: const Color(0xFF4ECDC4).withOpacity(0.3),
+                    blurRadius: 15,
+                    offset: const Offset(0, 5),
                   ),
-                  const SizedBox(height: 70),
                 ],
               ),
-              // Exercise title card positioning remains the same
-              Positioned(
-                top: 310,
-                left: 20,
-                right: 20,
+              child: IntrinsicHeight(
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Expanded(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            widget.workout.exercise,
+                            style: const TextStyle(
+                              fontSize: 20,
+                              height: 1.1,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                              shadows: [
+                                Shadow(
+                                  color: Colors.black12,
+                                  offset: Offset(0, 2),
+                                  blurRadius: 4,
+                                ),
+                              ],
+                            ),
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                          const SizedBox(height: 4),
+                          Container(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 10,
+                              vertical: 3,
+                            ),
+                            decoration: BoxDecoration(
+                              color: Colors.white.withOpacity(0.2),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: Text(
+                              'Day ${widget.workout.day}',
+                              style: const TextStyle(
+                                fontSize: 13,
+                                fontWeight: FontWeight.w500,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(width: 8),
+                    Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        _buildCompactTitleStat(
+                          icon: Icons.fitness_center,
+                          value: '${widget.workout.sets}',
+                          label: 'Sets',
+                        ),
+                        const SizedBox(width: 6),
+                        _buildCompactTitleStat(
+                          icon: Icons.repeat,
+                          value: widget.workout.repsRange,
+                          label: 'Reps',
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ).animate().slideY(
+              begin: 0.3,
+              duration: 600.ms,
+              curve: Curves.easeOutQuart,
+              delay: 200.ms,
+            ),
+          ),
+          // Chat button
+          Positioned(
+            bottom: size.height * 0.02,
+            left: 0,
+            right: 0,
+            child: Center(
+              child: GestureDetector(
+                onTap: () {
+                  showModalBottomSheet(
+                    context: context,
+                    isScrollControlled: true,
+                    backgroundColor: Colors.transparent,
+                    builder: (context) => BackdropFilter(
+                      filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+                      child: WorkoutChatModal(
+                        workoutName: widget.workout.exercise,
+                        workout: widget.workout,
+                      ),
+                    ),
+                  );
+                },
                 child: Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight,
                       colors: [
-                        const Color(0xFF4ECDC4).withOpacity(0.9),
-                        const Color(0xFF45B7D1).withOpacity(0.9),
+                        const Color(0xFF4ECDC4),
+                        const Color(0xFF45B7D1),
                       ],
                     ),
-                    borderRadius: BorderRadius.circular(20),
+                    borderRadius: BorderRadius.circular(24),
                     boxShadow: [
                       BoxShadow(
                         color: const Color(0xFF4ECDC4).withOpacity(0.3),
-                        blurRadius: 15,
-                        offset: const Offset(0, 5),
+                        blurRadius: 12,
+                        offset: const Offset(0, 4),
                       ),
                     ],
                   ),
-                  child: IntrinsicHeight(
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Expanded(
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                widget.workout.exercise,
-                                style: const TextStyle(
-                                  fontSize: 20,
-                                  height: 1.1,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white,
-                                  shadows: [
-                                    Shadow(
-                                      color: Colors.black12,
-                                      offset: Offset(0, 2),
-                                      blurRadius: 4,
-                                    ),
-                                  ],
-                                ),
-                                maxLines: 2,
-                                overflow: TextOverflow.ellipsis,
-                              ),
-                              const SizedBox(height: 4),
-                              Container(
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 10,
-                                  vertical: 3,
-                                ),
-                                decoration: BoxDecoration(
-                                  color: Colors.white.withOpacity(0.2),
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                child: Text(
-                                  'Day ${widget.workout.day}',
-                                  style: const TextStyle(
-                                    fontSize: 13,
-                                    fontWeight: FontWeight.w500,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.all(6),
+                        decoration: BoxDecoration(
+                          color: Colors.white.withOpacity(0.2),
+                          shape: BoxShape.circle,
                         ),
-                        const SizedBox(width: 8),
-                        Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            _buildCompactTitleStat(
-                              icon: Icons.fitness_center,
-                              value: '${widget.workout.sets}',
-                              label: 'Sets',
-                            ),
-                            const SizedBox(width: 6),
-                            _buildCompactTitleStat(
-                              icon: Icons.repeat,
-                              value: widget.workout.repsRange,
-                              label: 'Reps',
-                            ),
-                          ],
+                        child: const Icon(
+                          Icons.psychology,
+                          color: Colors.white,
+                          size: 16,
                         ),
-                      ],
-                    ),
-                  ),
-                ).animate().slideY(
-                  begin: 0.3,
-                  duration: 600.ms,
-                  curve: Curves.easeOutQuart,
-                  delay: 200.ms,
-                ),
-              ),
-            ],
-          ),
-        ),
-        // Add chat button
-        Positioned(
-          bottom: 40,
-          left: 0,
-          right: 0,
-          child: Center(
-            child: GestureDetector(
-              onTap: () {
-                showModalBottomSheet(
-                  context: context,
-                  isScrollControlled: true,
-                  backgroundColor: Colors.transparent,
-                  builder: (context) => BackdropFilter(
-                    filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
-                    child: WorkoutChatModal(
-                      workoutName: widget.workout.exercise,
-                    ),
-                  ),
-                );
-              },
-              child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                    colors: [
-                      const Color(0xFF4ECDC4),
-                      const Color(0xFF45B7D1),
+                      ).animate(onPlay: (controller) => controller.repeat())
+                        .scaleXY(
+                          duration: 2.seconds,
+                          begin: 0.9,
+                          end: 1.1,
+                          curve: Curves.easeInOut,
+                        )
+                        .then()
+                        .scaleXY(
+                          duration: 2.seconds,
+                          begin: 1.1,
+                          end: 0.9,
+                          curve: Curves.easeInOut,
+                        ),
+                      const SizedBox(width: 8),
+                      const Text(
+                        'Ask AI',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 13,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
                     ],
                   ),
-                  borderRadius: BorderRadius.circular(24),
-                  boxShadow: [
-                    BoxShadow(
-                      color: const Color(0xFF4ECDC4).withOpacity(0.3),
-                      blurRadius: 12,
-                      offset: const Offset(0, 4),
-                    ),
-                  ],
                 ),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Container(
-                      padding: const EdgeInsets.all(6),
-                      decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.2),
-                        shape: BoxShape.circle,
-                      ),
-                      child: const Icon(
-                        Icons.psychology,
-                        color: Colors.white,
-                        size: 16,
-                      ),
-                    ).animate(onPlay: (controller) => controller.repeat())
-                      .scaleXY(
-                        duration: 2.seconds,
-                        begin: 0.9,
-                        end: 1.1,
-                        curve: Curves.easeInOut,
-                      )
-                      .then()
-                      .scaleXY(
-                        duration: 2.seconds,
-                        begin: 1.1,
-                        end: 0.9,
-                        curve: Curves.easeInOut,
-                      ),
-                    const SizedBox(width: 8),
-                    const Text(
-                      'Ask AI',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 13,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ).animate().scale(delay: 1000.ms),
+              ).animate().scale(delay: 1000.ms),
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 
@@ -492,47 +500,48 @@ class _WorkoutDetailsScreenState extends State<WorkoutDetailsScreen> with Single
   }
 
   Widget _buildInstructionsCard(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return ValueListenableBuilder<bool>(
+      valueListenable: _isExpandedNotifier,
+      builder: (context, isExpanded, child) {
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
           children: [
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Container(
-                  padding: const EdgeInsets.all(8),
-                  decoration: BoxDecoration(
-                    color: const Color(0xFF4ECDC4).withOpacity(0.1),
-                    borderRadius: BorderRadius.circular(16),
-                    boxShadow: [
-                      BoxShadow(
+                Row(
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.all(8),
+                      decoration: BoxDecoration(
                         color: const Color(0xFF4ECDC4).withOpacity(0.1),
-                        blurRadius: 8,
-                        offset: const Offset(0, 2),
+                        borderRadius: BorderRadius.circular(16),
+                        boxShadow: [
+                          BoxShadow(
+                            color: const Color(0xFF4ECDC4).withOpacity(0.1),
+                            blurRadius: 8,
+                            offset: const Offset(0, 2),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
-                  child: const Icon(
-                    Icons.description_outlined,
-                    color: Color(0xFF4ECDC4),
-                    size: 20,
-                  ),
-                ),
-                const SizedBox(width: 12),
-                Text(
-                  'Instructions',
-                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                        color: const Color(0xFF2D3142),
-                        fontWeight: FontWeight.bold,
+                      child: const Icon(
+                        Icons.description_outlined,
+                        color: Color(0xFF4ECDC4),
+                        size: 20,
                       ),
+                    ),
+                    const SizedBox(width: 12),
+                    Text(
+                      'Instructions',
+                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                            color: const Color(0xFF2D3142),
+                            fontWeight: FontWeight.bold,
+                          ),
+                    ),
+                  ],
                 ),
-              ],
-            ),
-            ValueListenableBuilder<bool>(
-              valueListenable: _isExpandedNotifier,
-              builder: (context, isExpanded, child) {
-                return TextButton(
+                TextButton(
                   onPressed: () {
                     _isExpandedNotifier.value = !isExpanded;
                   },
@@ -547,83 +556,73 @@ class _WorkoutDetailsScreenState extends State<WorkoutDetailsScreen> with Single
                       fontWeight: FontWeight.w600,
                     ),
                   ),
-                );
-              },
-            ),
-          ],
-        ),
-        const SizedBox(height: 8),
-        ValueListenableBuilder<bool>(
-          valueListenable: _isExpandedNotifier,
-          builder: (context, isExpanded, child) {
-            return Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                AnimatedCrossFade(
-                  firstChild: Text(
-                    widget.workout.instructions,
-                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                          color: const Color(0xFF2D3142).withOpacity(0.7),
-                          height: 1.4,
-                        ),
-                    maxLines: 3,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                  secondChild: Text(
-                    widget.workout.instructions,
-                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                          color: const Color(0xFF2D3142).withOpacity(0.7),
-                          height: 1.4,
-                        ),
-                  ),
-                  crossFadeState: isExpanded
-                      ? CrossFadeState.showSecond
-                      : CrossFadeState.showFirst,
-                  duration: const Duration(milliseconds: 300),
                 ),
-                if (widget.workout.tips.isNotEmpty) ...[
-                  const SizedBox(height: 16),
-                  Container(
-                    padding: const EdgeInsets.all(12),
-                    decoration: BoxDecoration(
-                      color: const Color(0xFFFF6B6B).withOpacity(0.1),
-                      borderRadius: BorderRadius.circular(16),
-                      boxShadow: [
-                        BoxShadow(
-                          color: const Color(0xFFFF6B6B).withOpacity(0.1),
-                          blurRadius: 8,
-                          offset: const Offset(0, 2),
-                        ),
-                      ],
-                    ),
-                    child: Row(
-                      children: [
-                        const Icon(
-                          Icons.lightbulb_outline,
-                          color: Color(0xFFFF6B6B),
-                          size: 20,
-                        ),
-                        const SizedBox(width: 8),
-                        Expanded(
-                          child: Text(
-                            widget.workout.tips,
-                            style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                                  color: const Color(0xFF2D3142),
-                                  height: 1.3,
-                                ),
-                            maxLines: isExpanded ? null : 2,
-                            overflow: isExpanded ? null : TextOverflow.ellipsis,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
               ],
-            );
-          },
-        ),
-      ],
+            ),
+            const SizedBox(height: 8),
+            AnimatedCrossFade(
+              firstChild: Text(
+                widget.workout.instructions,
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                      color: const Color(0xFF2D3142).withOpacity(0.7),
+                      height: 1.3,
+                    ),
+                maxLines: 3,
+                overflow: TextOverflow.ellipsis,
+              ),
+              secondChild: Text(
+                widget.workout.instructions,
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                      color: const Color(0xFF2D3142).withOpacity(0.7),
+                      height: 1.3,
+                    ),
+              ),
+              crossFadeState: isExpanded
+                  ? CrossFadeState.showSecond
+                  : CrossFadeState.showFirst,
+              duration: const Duration(milliseconds: 300),
+            ),
+            if (widget.workout.tips.isNotEmpty) ...[
+              SizedBox(height: MediaQuery.of(context).size.height * 0.01),
+              Container(
+                padding: const EdgeInsets.all(12),
+                decoration: BoxDecoration(
+                  color: const Color(0xFFFF6B6B).withOpacity(0.1),
+                  borderRadius: BorderRadius.circular(16),
+                  boxShadow: [
+                    BoxShadow(
+                      color: const Color(0xFFFF6B6B).withOpacity(0.1),
+                      blurRadius: 8,
+                      offset: const Offset(0, 2),
+                    ),
+                  ],
+                ),
+                child: Row(
+                  children: [
+                    const Icon(
+                      Icons.lightbulb_outline,
+                      color: Color(0xFFFF6B6B),
+                      size: 20,
+                    ),
+                    const SizedBox(width: 8),
+                    Expanded(
+                      child: Text(
+                        widget.workout.tips,
+                        style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                              color: const Color(0xFF2D3142),
+                              height: 1.3,
+                            ),
+                        maxLines: isExpanded ? null : 2,
+                        overflow: isExpanded ? null : TextOverflow.ellipsis,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ],
+        );
+      },
     );
   }
 

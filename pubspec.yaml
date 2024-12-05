@@ -18,6 +18,7 @@ dependencies:
   intl: ^0.20.1
   flutter_svg: ^2.0.7
   flutter_staggered_animations: ^1.1.1
+  http: ^1.1.0
 
 dev_dependencies:
   flutter_test:
@@ -30,3 +31,9 @@ flutter:
   assets:
     - json/
     - assets/images/
+  fonts:
+    - family: Noto Sans Bengali
+      fonts:
+        - asset: assets/fonts/NotoSansBengali-Regular.ttf
+        - asset: assets/fonts/NotoSansBengali-Bold.ttf
+          weight: 700
