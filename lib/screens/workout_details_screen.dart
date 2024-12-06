@@ -67,33 +67,84 @@ class _WorkoutDetailsScreenState extends State<WorkoutDetailsScreen> with Single
             // Main content
             _buildMainContent(context),
             
-            // Back button overlay
+            // New header with back button
             SafeArea(
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: GestureDetector(
-                  onTap: () => Navigator.pop(context),
-                  child: Container(
-                    padding: const EdgeInsets.all(12),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(16),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.1),
-                          blurRadius: 10,
-                          offset: const Offset(0, 2),
-                        ),
-                      ],
-                    ),
-                    child: const Icon(
-                      Icons.arrow_back_ios,
-                      color: Color(0xFF2D3142),
-                      size: 20,
-                    ),
+              child: Container(
+                padding: const EdgeInsets.fromLTRB(8, 8, 20, 8),
+                decoration: BoxDecoration(
+                  color: Colors.white.withOpacity(0.9),
+                  borderRadius: const BorderRadius.vertical(
+                    bottom: Radius.circular(24),
                   ),
-                ).animate().scale(delay: 200.ms),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.05),
+                      blurRadius: 10,
+                      offset: const Offset(0, 2),
+                    ),
+                  ],
+                ),
+                child: Row(
+                  children: [
+                    // Back button
+                    Material(
+                      color: Colors.transparent,
+                      child: InkWell(
+                        onTap: () => Navigator.pop(context),
+                        borderRadius: BorderRadius.circular(16),
+                        child: Container(
+                          padding: const EdgeInsets.all(12),
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              begin: Alignment.topLeft,
+                              end: Alignment.bottomRight,
+                              colors: [
+                                const Color(0xFF4ECDC4).withOpacity(0.1),
+                                const Color(0xFF45B7D1).withOpacity(0.1),
+                              ],
+                            ),
+                            borderRadius: BorderRadius.circular(16),
+                          ),
+                          child: const Icon(
+                            Icons.arrow_back_ios,
+                            color: Color(0xFF2D3142),
+                            size: 20,
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(width: 16),
+                    // Title
+                    Expanded(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Workout Details',
+                            style: const TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              color: Color(0xFF2D3142),
+                            ),
+                          ),
+                          Text(
+                            'Day ${widget.workout.day}',
+                            style: TextStyle(
+                              fontSize: 13,
+                              color: const Color(0xFF2D3142).withOpacity(0.6),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
               ),
+            ).animate().slideY(
+              begin: -1,
+              duration: 400.ms,
+              curve: Curves.easeOutQuart,
             ),
           ],
         ),
@@ -103,8 +154,9 @@ class _WorkoutDetailsScreenState extends State<WorkoutDetailsScreen> with Single
 
   Widget _buildMainContent(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    final imageHeight = size.height * 0.35; // Reduced to 35% of screen height
-    final contentPadding = size.height * 0.02;
+    final imageHeight = size.height * 0.35;
+    final contentPadding = size.height * 0.015;
+    final topPadding = MediaQuery.of(context).padding.top + 60;
 
     return Container(
       height: size.height,
@@ -124,10 +176,13 @@ class _WorkoutDetailsScreenState extends State<WorkoutDetailsScreen> with Single
       child: Stack(
         clipBehavior: Clip.none,
         children: [
-          // Main scrollable content
           CustomScrollView(
             physics: const BouncingScrollPhysics(),
             slivers: [
+              // Top padding for header
+              SliverToBoxAdapter(
+                child: SizedBox(height: topPadding),
+              ),
               // Image section
               SliverToBoxAdapter(
                 child: SizedBox(
@@ -135,13 +190,9 @@ class _WorkoutDetailsScreenState extends State<WorkoutDetailsScreen> with Single
                   child: _buildMainImage(context),
                 ),
               ),
-              // Space for floating title
-              SliverToBoxAdapter(
-                child: SizedBox(height: size.height * 0.08),
-              ),
               // Instructions and next workouts
               SliverPadding(
-                padding: EdgeInsets.fromLTRB(20, 0, 20, size.height * 0.12),
+                padding: EdgeInsets.fromLTRB(16, 16, 16, size.height * 0.08),
                 sliver: SliverList(
                   delegate: SliverChildListDelegate([
                     _buildInstructionsCard(context),
@@ -152,110 +203,9 @@ class _WorkoutDetailsScreenState extends State<WorkoutDetailsScreen> with Single
               ),
             ],
           ),
-          // Exercise title card
-          Positioned(
-            top: imageHeight - 60,
-            left: 20,
-            right: 20,
-            child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                  colors: [
-                    const Color(0xFF4ECDC4).withOpacity(0.9),
-                    const Color(0xFF45B7D1).withOpacity(0.9),
-                  ],
-                ),
-                borderRadius: BorderRadius.circular(20),
-                boxShadow: [
-                  BoxShadow(
-                    color: const Color(0xFF4ECDC4).withOpacity(0.3),
-                    blurRadius: 15,
-                    offset: const Offset(0, 5),
-                  ),
-                ],
-              ),
-              child: IntrinsicHeight(
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Expanded(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            widget.workout.exercise,
-                            style: const TextStyle(
-                              fontSize: 20,
-                              height: 1.1,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white,
-                              shadows: [
-                                Shadow(
-                                  color: Colors.black12,
-                                  offset: Offset(0, 2),
-                                  blurRadius: 4,
-                                ),
-                              ],
-                            ),
-                            maxLines: 2,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                          const SizedBox(height: 4),
-                          Container(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 10,
-                              vertical: 3,
-                            ),
-                            decoration: BoxDecoration(
-                              color: Colors.white.withOpacity(0.2),
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            child: Text(
-                              'Day ${widget.workout.day}',
-                              style: const TextStyle(
-                                fontSize: 13,
-                                fontWeight: FontWeight.w500,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    const SizedBox(width: 8),
-                    Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        _buildCompactTitleStat(
-                          icon: Icons.fitness_center,
-                          value: '${widget.workout.sets}',
-                          label: 'Sets',
-                        ),
-                        const SizedBox(width: 6),
-                        _buildCompactTitleStat(
-                          icon: Icons.repeat,
-                          value: widget.workout.repsRange,
-                          label: 'Reps',
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-            ).animate().slideY(
-              begin: 0.3,
-              duration: 600.ms,
-              curve: Curves.easeOutQuart,
-              delay: 200.ms,
-            ),
-          ),
           // Chat button
           Positioned(
-            bottom: size.height * 0.02,
+            bottom: size.height * 0.015,
             left: 0,
             right: 0,
             child: Center(
@@ -507,13 +457,106 @@ class _WorkoutDetailsScreenState extends State<WorkoutDetailsScreen> with Single
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: [
+            // Title section
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+              margin: const EdgeInsets.only(bottom: 16),
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: [
+                    const Color(0xFF4ECDC4).withOpacity(0.9),
+                    const Color(0xFF45B7D1).withOpacity(0.9),
+                  ],
+                ),
+                borderRadius: BorderRadius.circular(20),
+                boxShadow: [
+                  BoxShadow(
+                    color: const Color(0xFF4ECDC4).withOpacity(0.3),
+                    blurRadius: 15,
+                    offset: const Offset(0, 5),
+                  ),
+                ],
+              ),
+              child: IntrinsicHeight(
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Expanded(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            widget.workout.exercise,
+                            style: const TextStyle(
+                              fontSize: 18,
+                              height: 1.1,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                              shadows: [
+                                Shadow(
+                                  color: Colors.black12,
+                                  offset: Offset(0, 2),
+                                  blurRadius: 4,
+                                ),
+                              ],
+                            ),
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                          const SizedBox(height: 4),
+                          Container(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 8,
+                              vertical: 2,
+                            ),
+                            decoration: BoxDecoration(
+                              color: Colors.white.withOpacity(0.2),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: Text(
+                              'Day ${widget.workout.day}',
+                              style: const TextStyle(
+                                fontSize: 13,
+                                fontWeight: FontWeight.w500,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(width: 8),
+                    Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        _buildCompactTitleStat(
+                          icon: Icons.fitness_center,
+                          value: '${widget.workout.sets}',
+                          label: 'Sets',
+                        ),
+                        const SizedBox(width: 6),
+                        _buildCompactTitleStat(
+                          icon: Icons.repeat,
+                          value: widget.workout.repsRange,
+                          label: 'Reps',
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            // Instructions header
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Row(
                   children: [
                     Container(
-                      padding: const EdgeInsets.all(8),
+                      padding: const EdgeInsets.all(6),
                       decoration: BoxDecoration(
                         color: const Color(0xFF4ECDC4).withOpacity(0.1),
                         borderRadius: BorderRadius.circular(16),
@@ -531,10 +574,11 @@ class _WorkoutDetailsScreenState extends State<WorkoutDetailsScreen> with Single
                         size: 20,
                       ),
                     ),
-                    const SizedBox(width: 12),
+                    const SizedBox(width: 8),
                     Text(
                       'Instructions',
                       style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                            fontSize: 16,
                             color: const Color(0xFF2D3142),
                             fontWeight: FontWeight.bold,
                           ),
@@ -643,7 +687,7 @@ class _WorkoutDetailsScreenState extends State<WorkoutDetailsScreen> with Single
         Row(
           children: [
             Container(
-              padding: const EdgeInsets.all(8),
+              padding: const EdgeInsets.all(6),
               decoration: BoxDecoration(
                 color: const Color(0xFF45B7D1).withOpacity(0.1),
                 borderRadius: BorderRadius.circular(16),
@@ -661,17 +705,18 @@ class _WorkoutDetailsScreenState extends State<WorkoutDetailsScreen> with Single
                 size: 20,
               ),
             ),
-            const SizedBox(width: 12),
+            const SizedBox(width: 8),
             Text(
               'Other Workouts',
               style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                    fontSize: 16,
                     color: const Color(0xFF2D3142),
                     fontWeight: FontWeight.bold,
                   ),
             ),
           ],
         ),
-        const SizedBox(height: 12),
+        const SizedBox(height: 8),
         if (previousWorkout != null)
           _buildWorkoutNavigationItem(
             context,
@@ -700,7 +745,7 @@ class _WorkoutDetailsScreenState extends State<WorkoutDetailsScreen> with Single
     required int delay,
   }) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 12),
+      padding: const EdgeInsets.only(bottom: 8),
       child: InkWell(
         onTap: () {
           Navigator.pushReplacement(
@@ -719,7 +764,7 @@ class _WorkoutDetailsScreenState extends State<WorkoutDetailsScreen> with Single
         },
         borderRadius: BorderRadius.circular(20),
         child: Container(
-          padding: const EdgeInsets.all(12),
+          padding: const EdgeInsets.all(10),
           decoration: BoxDecoration(
             color: const Color(0xFF45B7D1).withOpacity(0.1),
             borderRadius: BorderRadius.circular(20),
@@ -734,8 +779,8 @@ class _WorkoutDetailsScreenState extends State<WorkoutDetailsScreen> with Single
           child: Row(
             children: [
               Container(
-                width: 60,
-                height: 60,
+                width: 50,
+                height: 50,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(16),
                   boxShadow: [
@@ -754,7 +799,7 @@ class _WorkoutDetailsScreenState extends State<WorkoutDetailsScreen> with Single
                   ),
                 ),
               ),
-              const SizedBox(width: 12),
+              const SizedBox(width: 8),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
