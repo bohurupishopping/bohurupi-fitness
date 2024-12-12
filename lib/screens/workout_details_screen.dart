@@ -24,6 +24,9 @@ class _WorkoutDetailsScreenState extends State<WorkoutDetailsScreen> with Single
   final ValueNotifier<bool> _isExpandedNotifier = ValueNotifier<bool>(false);
   late AnimationController _animationController;
   late Animation<double> _headerScaleAnimation;
+  double _startX = 0.0;
+  double _currentX = 0.0;
+  static const double _swipeThreshold = 50.0;
 
   @override
   void initState() {
@@ -65,7 +68,71 @@ class _WorkoutDetailsScreenState extends State<WorkoutDetailsScreen> with Single
         child: Stack(
           children: [
             // Main content
-            _buildMainContent(context),
+            GestureDetector(
+              onHorizontalDragStart: (details) {
+                setState(() {
+                  _startX = details.globalPosition.dx;
+                });
+              },
+              onHorizontalDragUpdate: (details) {
+                setState(() {
+                  _currentX = details.globalPosition.dx;
+                });
+              },
+              onHorizontalDragEnd: (details) {
+                final delta = _currentX - _startX;
+                final workoutProvider = Provider.of<WorkoutProvider>(context, listen: false);
+                final workouts = workoutProvider.workouts;
+                final currentIndex = workouts.indexWhere((w) => w.id == widget.workout.id);
+
+                if (delta.abs() > _swipeThreshold) {
+                  if (delta > 0 && currentIndex > 0) {
+                    // Swipe right - go to previous workout
+                    Navigator.pushReplacement(
+                      context,
+                      PageRouteBuilder(
+                        pageBuilder: (context, animation, secondaryAnimation) =>
+                            WorkoutDetailsScreen(workout: workouts[currentIndex - 1]),
+                        transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                          return SlideTransition(
+                            position: Tween<Offset>(
+                              begin: const Offset(-1.0, 0.0),
+                              end: Offset.zero,
+                            ).animate(CurvedAnimation(
+                              parent: animation,
+                              curve: Curves.easeOut,
+                            )),
+                            child: child,
+                          );
+                        },
+                      ),
+                    );
+                  } else if (delta < 0 && currentIndex < workouts.length - 1) {
+                    // Swipe left - go to next workout
+                    Navigator.pushReplacement(
+                      context,
+                      PageRouteBuilder(
+                        pageBuilder: (context, animation, secondaryAnimation) =>
+                            WorkoutDetailsScreen(workout: workouts[currentIndex + 1]),
+                        transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                          return SlideTransition(
+                            position: Tween<Offset>(
+                              begin: const Offset(1.0, 0.0),
+                              end: Offset.zero,
+                            ).animate(CurvedAnimation(
+                              parent: animation,
+                              curve: Curves.easeOut,
+                            )),
+                            child: child,
+                          );
+                        },
+                      ),
+                    );
+                  }
+                }
+              },
+              child: _buildMainContent(context),
+            ),
             
             // New header with back button
             SafeArea(
@@ -138,6 +205,90 @@ class _WorkoutDetailsScreenState extends State<WorkoutDetailsScreen> with Single
                         ],
                       ),
                     ),
+                    // Add Ask AI button
+                    Material(
+                      color: Colors.transparent,
+                      child: InkWell(
+                        onTap: () {
+                          showModalBottomSheet(
+                            context: context,
+                            isScrollControlled: true,
+                            backgroundColor: Colors.transparent,
+                            builder: (context) => BackdropFilter(
+                              filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+                              child: WorkoutChatModal(
+                                workoutName: widget.workout.exercise,
+                                workout: widget.workout,
+                              ),
+                            ),
+                          );
+                        },
+                        borderRadius: BorderRadius.circular(16),
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 12,
+                            vertical: 8,
+                          ),
+                          decoration: BoxDecoration(
+                            gradient: const LinearGradient(
+                              begin: Alignment.topLeft,
+                              end: Alignment.bottomRight,
+                              colors: [
+                                Color(0xFF4ECDC4),
+                                Color(0xFF45B7D1),
+                              ],
+                            ),
+                            borderRadius: BorderRadius.circular(16),
+                            boxShadow: [
+                              BoxShadow(
+                                color: const Color(0xFF4ECDC4).withOpacity(0.3),
+                                blurRadius: 8,
+                                offset: const Offset(0, 2),
+                              ),
+                            ],
+                          ),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Container(
+                                padding: const EdgeInsets.all(4),
+                                decoration: BoxDecoration(
+                                  color: Colors.white.withOpacity(0.2),
+                                  shape: BoxShape.circle,
+                                ),
+                                child: const Icon(
+                                  Icons.psychology,
+                                  color: Colors.white,
+                                  size: 14,
+                                ),
+                              ).animate(onPlay: (controller) => controller.repeat())
+                                .scaleXY(
+                                  duration: 2.seconds,
+                                  begin: 0.9,
+                                  end: 1.1,
+                                  curve: Curves.easeInOut,
+                                )
+                                .then()
+                                .scaleXY(
+                                  duration: 2.seconds,
+                                  begin: 1.1,
+                                  end: 0.9,
+                                  curve: Curves.easeInOut,
+                                ),
+                              const SizedBox(width: 4),
+                              const Text(
+                                'Ask AI',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -158,136 +309,116 @@ class _WorkoutDetailsScreenState extends State<WorkoutDetailsScreen> with Single
     final contentPadding = size.height * 0.015;
     final topPadding = MediaQuery.of(context).padding.top + 60;
 
-    return Container(
-      height: size.height,
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: const BorderRadius.vertical(
-          top: Radius.circular(32),
-        ),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.05),
-            blurRadius: 20,
-            offset: const Offset(0, -5),
-          ),
-        ],
-      ),
-      child: Stack(
-        clipBehavior: Clip.none,
-        children: [
-          CustomScrollView(
-            physics: const BouncingScrollPhysics(),
-            slivers: [
-              // Top padding for header
-              SliverToBoxAdapter(
-                child: SizedBox(height: topPadding),
-              ),
-              // Image section
-              SliverToBoxAdapter(
-                child: SizedBox(
-                  height: imageHeight,
-                  child: _buildMainImage(context),
-                ),
-              ),
-              // Instructions and next workouts
-              SliverPadding(
-                padding: EdgeInsets.fromLTRB(16, 16, 16, size.height * 0.08),
-                sliver: SliverList(
-                  delegate: SliverChildListDelegate([
-                    _buildInstructionsCard(context),
-                    SizedBox(height: contentPadding),
-                    _buildNextWorkouts(context),
-                  ]),
-                ),
-              ),
-            ],
-          ),
-          // Chat button
-          Positioned(
-            bottom: size.height * 0.015,
-            left: 0,
-            right: 0,
-            child: Center(
-              child: GestureDetector(
-                onTap: () {
-                  showModalBottomSheet(
-                    context: context,
-                    isScrollControlled: true,
-                    backgroundColor: Colors.transparent,
-                    builder: (context) => BackdropFilter(
-                      filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
-                      child: WorkoutChatModal(
-                        workoutName: widget.workout.exercise,
-                        workout: widget.workout,
-                      ),
-                    ),
+    return GestureDetector(
+      onHorizontalDragStart: (details) {
+        setState(() {
+          _startX = details.globalPosition.dx;
+        });
+      },
+      onHorizontalDragUpdate: (details) {
+        setState(() {
+          _currentX = details.globalPosition.dx;
+        });
+      },
+      onHorizontalDragEnd: (details) {
+        final delta = _currentX - _startX;
+        final workoutProvider = Provider.of<WorkoutProvider>(context, listen: false);
+        final workouts = workoutProvider.workouts;
+        final currentIndex = workouts.indexWhere((w) => w.id == widget.workout.id);
+
+        if (delta.abs() > _swipeThreshold) {
+          if (delta > 0 && currentIndex > 0) {
+            // Swipe right - go to previous workout
+            Navigator.pushReplacement(
+              context,
+              PageRouteBuilder(
+                pageBuilder: (context, animation, secondaryAnimation) =>
+                    WorkoutDetailsScreen(workout: workouts[currentIndex - 1]),
+                transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                  return SlideTransition(
+                    position: Tween<Offset>(
+                      begin: const Offset(-1.0, 0.0),
+                      end: Offset.zero,
+                    ).animate(CurvedAnimation(
+                      parent: animation,
+                      curve: Curves.easeOut,
+                    )),
+                    child: child,
                   );
                 },
-                child: Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                      colors: [
-                        const Color(0xFF4ECDC4),
-                        const Color(0xFF45B7D1),
-                      ],
-                    ),
-                    borderRadius: BorderRadius.circular(24),
-                    boxShadow: [
-                      BoxShadow(
-                        color: const Color(0xFF4ECDC4).withOpacity(0.3),
-                        blurRadius: 12,
-                        offset: const Offset(0, 4),
-                      ),
-                    ],
-                  ),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Container(
-                        padding: const EdgeInsets.all(6),
-                        decoration: BoxDecoration(
-                          color: Colors.white.withOpacity(0.2),
-                          shape: BoxShape.circle,
-                        ),
-                        child: const Icon(
-                          Icons.psychology,
-                          color: Colors.white,
-                          size: 16,
-                        ),
-                      ).animate(onPlay: (controller) => controller.repeat())
-                        .scaleXY(
-                          duration: 2.seconds,
-                          begin: 0.9,
-                          end: 1.1,
-                          curve: Curves.easeInOut,
-                        )
-                        .then()
-                        .scaleXY(
-                          duration: 2.seconds,
-                          begin: 1.1,
-                          end: 0.9,
-                          curve: Curves.easeInOut,
-                        ),
-                      const SizedBox(width: 8),
-                      const Text(
-                        'Ask AI',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 13,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    ],
+              ),
+            );
+          } else if (delta < 0 && currentIndex < workouts.length - 1) {
+            // Swipe left - go to next workout
+            Navigator.pushReplacement(
+              context,
+              PageRouteBuilder(
+                pageBuilder: (context, animation, secondaryAnimation) =>
+                    WorkoutDetailsScreen(workout: workouts[currentIndex + 1]),
+                transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                  return SlideTransition(
+                    position: Tween<Offset>(
+                      begin: const Offset(1.0, 0.0),
+                      end: Offset.zero,
+                    ).animate(CurvedAnimation(
+                      parent: animation,
+                      curve: Curves.easeOut,
+                    )),
+                    child: child,
+                  );
+                },
+              ),
+            );
+          }
+        }
+      },
+      child: Container(
+        height: size.height,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: const BorderRadius.vertical(
+            top: Radius.circular(32),
+          ),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.05),
+              blurRadius: 20,
+              offset: const Offset(0, -5),
+            ),
+          ],
+        ),
+        child: Stack(
+          clipBehavior: Clip.none,
+          children: [
+            CustomScrollView(
+              physics: const BouncingScrollPhysics(),
+              slivers: [
+                // Top padding for header
+                SliverToBoxAdapter(
+                  child: SizedBox(height: topPadding),
+                ),
+                // Image section
+                SliverToBoxAdapter(
+                  child: SizedBox(
+                    height: imageHeight,
+                    child: _buildMainImage(context),
                   ),
                 ),
-              ).animate().scale(delay: 1000.ms),
+                // Instructions and next workouts
+                SliverPadding(
+                  padding: EdgeInsets.fromLTRB(16, 16, 16, size.height * 0.08),
+                  sliver: SliverList(
+                    delegate: SliverChildListDelegate([
+                      _buildInstructionsCard(context),
+                      SizedBox(height: contentPadding),
+                      _buildNextWorkouts(context),
+                    ]),
+                  ),
+                ),
+              ],
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
