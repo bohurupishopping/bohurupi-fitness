@@ -16,7 +16,7 @@ class AIModel {
   });
 
   static const defaultModel = AIModel(
-    id: 'gemini-1.5-flash',
+    id: 'gemini-2.0-flash',
     name: 'Gemini Pro',
     provider: 'Google',
     maxTokens: 4096,

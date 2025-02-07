@@ -1,5 +1,5 @@
 class Constants {
-  static const String googleApiKey = 'AIzaSyBspYz7Iq7-_UFR6BWREP8yxP_TJaGkRrU';
+  static const String googleApiKey = 'AIzaSyCaLlQP-aV2pcPdr1FFBQ0tNzgYaK9xq8Y';
   
   // System prompts
   static const String workoutPrompt = '''

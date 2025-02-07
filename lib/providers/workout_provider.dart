@@ -6,7 +6,7 @@ import '../models/workout.dart';
 class WorkoutProvider extends ChangeNotifier {
   List<Workout> _workouts = [];
   String _selectedDay = 'Back';
-  Set<String> _completedWorkouts = {};
+  final Set<String> _completedWorkouts = {};
 
   List<Workout> get workouts => _workouts;
   String get selectedDay => _selectedDay;
