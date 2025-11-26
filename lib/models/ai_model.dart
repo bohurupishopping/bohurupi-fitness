@@ -10,16 +10,16 @@ class AIModel {
     required this.id,
     required this.name,
     required this.provider,
-    this.maxTokens = 4096,
+    this.maxTokens = 2048,
     this.temperature = 0.7,
     this.topP = 0.95,
   });
 
   static const defaultModel = AIModel(
-    id: 'gemini-2.0-flash',
-    name: 'Gemini Pro',
+    id: 'gemini-flash-lite-latest',
+    name: 'Gemini Flash',
     provider: 'Google',
-    maxTokens: 4096,
+    maxTokens: 2048,
     temperature: 0.7,
   );
 } 
