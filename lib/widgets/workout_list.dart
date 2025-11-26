@@ -29,26 +29,6 @@ class WorkoutList extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  TextButton(
-                    onPressed: () {},
-                    style: TextButton.styleFrom(
-                      foregroundColor: Theme.of(context).primaryColor,
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 16,
-                        vertical: 8,
-                      ),
-                      backgroundColor: Theme.of(
-                        context,
-                      ).primaryColor.withValues(alpha: 0.1),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                    ),
-                    child: const Text(
-                      'See all',
-                      style: TextStyle(fontWeight: FontWeight.w600),
-                    ),
-                  ),
                 ],
               ),
             ),

@@ -67,31 +67,6 @@ class CategoryList extends StatelessWidget {
                   overflow: TextOverflow.ellipsis,
                 ),
               ),
-              TextButton(
-                onPressed: () {},
-                style: TextButton.styleFrom(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 12,
-                    vertical: 8,
-                  ),
-                  minimumSize: Size.zero,
-                  tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                  backgroundColor: Theme.of(
-                    context,
-                  ).primaryColor.withValues(alpha: 0.1),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                ),
-                child: Text(
-                  'View All',
-                  style: TextStyle(
-                    fontSize: 13,
-                    color: Theme.of(context).primaryColor,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-              ),
             ],
           ),
         ),
