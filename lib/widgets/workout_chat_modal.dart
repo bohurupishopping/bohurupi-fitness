@@ -124,10 +124,10 @@ class _WorkoutChatModalState extends State<WorkoutChatModal> {
         child: Container(
           height: MediaQuery.of(context).size.height * WorkoutChatModal._modalHeight,
           decoration: BoxDecoration(
-            color: Colors.white.withOpacity(0.8),
+            color: Colors.white.withValues(alpha: 0.8),
             borderRadius: const BorderRadius.vertical(top: Radius.circular(32)),
             border: Border.all(
-              color: Colors.white.withOpacity(0.2),
+              color: Colors.white.withValues(alpha: 0.2),
               width: 1.5,
             ),
           ),
@@ -174,7 +174,7 @@ class _ChatHeader extends StatelessWidget {
       decoration: BoxDecoration(
         border: Border(
           bottom: BorderSide(
-            color: WorkoutChatModal._textColor.withOpacity(0.1),
+            color: WorkoutChatModal._textColor.withValues(alpha: 0.1),
           ),
         ),
       ),
@@ -196,7 +196,7 @@ class _ChatHeader extends StatelessWidget {
                 workoutName,
                 style: TextStyle(
                   fontSize: 12,
-                  color: WorkoutChatModal._textColor.withOpacity(0.6),
+                color: WorkoutChatModal._textColor.withValues(alpha: 0.6),
                 ),
               ),
             ],
@@ -296,10 +296,10 @@ class _QuickQuestionButton extends StatelessWidget {
           vertical: 8,
         ),
         decoration: BoxDecoration(
-          color: WorkoutChatModal._primaryColor.withOpacity(0.1),
+          color: WorkoutChatModal._primaryColor.withValues(alpha: 0.1),
           borderRadius: BorderRadius.circular(20),
           border: Border.all(
-            color: WorkoutChatModal._primaryColor.withOpacity(0.2),
+            color: WorkoutChatModal._primaryColor.withValues(alpha: 0.2),
           ),
         ),
         child: Text(
@@ -327,14 +327,14 @@ class _EmptyChat extends StatelessWidget {
           Icon(
             Icons.psychology_outlined,
             size: 48,
-            color: WorkoutChatModal._primaryColor.withOpacity(0.3),
+          color: WorkoutChatModal._primaryColor.withValues(alpha: 0.3),
           ),
           const SizedBox(height: 16),
           Text(
             'Choose a question or ask anything\nabout this workout!',
             textAlign: TextAlign.center,
             style: TextStyle(
-              color: WorkoutChatModal._textColor.withOpacity(0.6),
+            color: WorkoutChatModal._textColor.withValues(alpha: 0.6),
               height: 1.5,
             ),
           ),
@@ -392,8 +392,8 @@ class _ChatMessage extends StatelessWidget {
             Container(
               padding: const EdgeInsets.all(8),
               decoration: BoxDecoration(
-                color: WorkoutChatModal._primaryColor.withOpacity(0.1),
-                shape: BoxShape.circle,
+            color: WorkoutChatModal._primaryColor.withValues(alpha: 0.1),
+            shape: BoxShape.circle,
               ),
               child: const Icon(
                 Icons.psychology,
@@ -410,15 +410,15 @@ class _ChatMessage extends StatelessWidget {
                 vertical: 12,
               ),
               decoration: BoxDecoration(
-                color: isUser 
-                  ? WorkoutChatModal._primaryColor.withOpacity(0.1)
+                color: isUser
+                  ? WorkoutChatModal._primaryColor.withValues(alpha: 0.1)
                   : Colors.white,
-                borderRadius: BorderRadius.circular(20),
-                border: Border.all(
-                  color: isUser
-                    ? Colors.transparent
-                    : Colors.black.withOpacity(0.1),
-                ),
+            borderRadius: BorderRadius.circular(20),
+            border: Border.all(
+              color: isUser
+                ? Colors.transparent
+                : Colors.black.withValues(alpha: 0.1),
+            ),
               ),
               child: Text(
                 _formatMessage(text, isUser),
@@ -473,10 +473,10 @@ class _ChatInput extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.fromLTRB(20, 12, 20, 24),
       decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.9),
+        color: Colors.white.withValues(alpha: 0.9),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.05),
+            color: Colors.black.withValues(alpha: 0.05),
             blurRadius: 10,
             offset: const Offset(0, -5),
           ),
@@ -488,12 +488,12 @@ class _ChatInput extends StatelessWidget {
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               decoration: BoxDecoration(
-                color: const Color(0xFFF5F6FA).withOpacity(0.8),
-                borderRadius: BorderRadius.circular(24),
-                border: Border.all(
-                  color: Colors.white.withOpacity(0.2),
-                  width: 1,
-                ),
+              color: const Color(0xFFF5F6FA).withValues(alpha: 0.8),
+              borderRadius: BorderRadius.circular(24),
+              border: Border.all(
+                color: Colors.white.withValues(alpha: 0.2),
+                width: 1,
+              ),
               ),
               child: TextField(
                 controller: controller,
@@ -543,7 +543,7 @@ class _SendButton extends StatelessWidget {
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
-            color: WorkoutChatModal._primaryColor.withOpacity(0.3),
+            color: WorkoutChatModal._primaryColor.withValues(alpha: 0.3),
             blurRadius: 8,
             offset: const Offset(0, 2),
           ),
@@ -586,11 +586,11 @@ class _FloatingAIIcon extends StatelessWidget {
           ),
           shape: BoxShape.circle,
           boxShadow: [
-            BoxShadow(
-              color: WorkoutChatModal._primaryColor.withOpacity(0.3),
-              blurRadius: 12,
-              offset: const Offset(0, 4),
-            ),
+          BoxShadow(
+            color: WorkoutChatModal._primaryColor.withValues(alpha: 0.3),
+            blurRadius: 12,
+            offset: const Offset(0, 4),
+          ),
           ],
         ),
         child: const Icon(
@@ -601,4 +601,4 @@ class _FloatingAIIcon extends StatelessWidget {
       ),
     );
   }
-} 
+}

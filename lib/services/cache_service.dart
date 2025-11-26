@@ -1,5 +1,4 @@
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
-import 'package:path_provider/path_provider.dart';
 
 class CacheService {
   static final CacheService instance = CacheService._internal();
@@ -8,7 +7,7 @@ class CacheService {
   CacheManager? _workoutImageCache;
 
   Future<void> initialize() async {
-    _workoutImageCache = await CacheManager(
+    _workoutImageCache = CacheManager(
       Config(
         'workout_images',
         stalePeriod: const Duration(days: 7),

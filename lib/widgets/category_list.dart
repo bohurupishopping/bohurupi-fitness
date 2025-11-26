@@ -133,7 +133,7 @@ class CategoryList extends StatelessWidget {
                                             borderRadius: BorderRadius.circular(24),
                                             boxShadow: [
                                               BoxShadow(
-                                                color: (category['color'] as Color).withOpacity(0.2),
+                                                color: (category['color'] as Color).withValues(alpha: 0.2),
                                                 blurRadius: 8,
                                                 offset: const Offset(0, 4),
                                               ),
@@ -145,9 +145,9 @@ class CategoryList extends StatelessWidget {
                                               Container(
                                                 padding: const EdgeInsets.all(10),
                                                 decoration: BoxDecoration(
-                                                  color: isSelected 
-                                                    ? Colors.white.withOpacity(0.2)
-                                                    : (category['color'] as Color).withOpacity(0.1),
+                                                  color: isSelected
+                                                    ? Colors.white.withValues(alpha: 0.2)
+                                                    : (category['color'] as Color).withValues(alpha: 0.1),
                                                   shape: BoxShape.circle,
                                                 ),
                                                 child: Icon(
@@ -191,4 +191,4 @@ class CategoryList extends StatelessWidget {
       ],
     );
   }
-} 
+}

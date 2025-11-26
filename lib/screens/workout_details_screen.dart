@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import '../models/workout.dart';
 import '../providers/workout_provider.dart';
 import 'dart:ui';
@@ -27,7 +26,6 @@ class _WorkoutDetailsScreenState extends State<WorkoutDetailsScreen> with Single
   
   final ValueNotifier<bool> _isExpandedNotifier = ValueNotifier<bool>(false);
   late final AnimationController _animationController;
-  late final Animation<double> _headerScaleAnimation;
   
   double _startX = 0.0;
   double _currentX = 0.0;
@@ -38,9 +36,6 @@ class _WorkoutDetailsScreenState extends State<WorkoutDetailsScreen> with Single
     _animationController = AnimationController(
       duration: _animationDuration,
       vsync: this,
-    );
-    _headerScaleAnimation = Tween<double>(begin: 1.0, end: 0.95).animate(
-      CurvedAnimation(parent: _animationController, curve: Curves.easeInOut),
     );
   }
 
@@ -98,8 +93,8 @@ class _WorkoutDetailsScreenState extends State<WorkoutDetailsScreen> with Single
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
             colors: [
-              const Color(0xFF4ECDC4).withOpacity(0.1),
-              const Color(0xFF45B7D1).withOpacity(0.1),
+              const Color(0xFF4ECDC4).withValues(alpha: 0.1),
+              const Color(0xFF45B7D1).withValues(alpha: 0.1),
             ],
           ),
         ),
@@ -194,7 +189,7 @@ class _WorkoutImage extends StatelessWidget {
           ),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.1),
+              color: Colors.black.withValues(alpha: 0.1),
               blurRadius: 15,
               offset: const Offset(0, 5),
             ),
@@ -229,13 +224,13 @@ class _WorkoutImage extends StatelessWidget {
                       end: Alignment.bottomCenter,
                       colors: [
                         Colors.transparent,
-                        Colors.black.withOpacity(0.5),
+                        Colors.black.withValues(alpha: 0.5),
                       ],
                     ),
                   ),
                 ),
               ),
-            ),
+              ),
             Positioned(
               top: 16,
               right: 16,
@@ -251,7 +246,7 @@ class _WorkoutImage extends StatelessWidget {
                       borderRadius: BorderRadius.circular(16),
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.black.withOpacity(0.1),
+                          color: Colors.black.withValues(alpha: 0.1),
                           blurRadius: 10,
                           offset: const Offset(0, 2),
                         ),
@@ -327,11 +322,11 @@ class _WorkoutInstructions extends StatelessWidget {
             Container(
               padding: const EdgeInsets.all(6),
               decoration: BoxDecoration(
-                color: const Color(0xFF4ECDC4).withOpacity(0.1),
+                color: const Color(0xFF4ECDC4).withValues(alpha: 0.1),
                 borderRadius: BorderRadius.circular(16),
                 boxShadow: [
                   BoxShadow(
-                    color: const Color(0xFF4ECDC4).withOpacity(0.1),
+                    color: const Color(0xFF4ECDC4).withValues(alpha: 0.1),
                     blurRadius: 8,
                     offset: const Offset(0, 2),
                   ),
@@ -379,7 +374,7 @@ class _WorkoutInstructions extends StatelessWidget {
       firstChild: Text(
         workout.instructions,
         style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-          color: const Color(0xFF2D3142).withOpacity(0.7),
+          color: const Color(0xFF2D3142).withValues(alpha: 0.7),
           height: 1.3,
         ),
         maxLines: 3,
@@ -388,7 +383,7 @@ class _WorkoutInstructions extends StatelessWidget {
       secondChild: Text(
         workout.instructions,
         style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-          color: const Color(0xFF2D3142).withOpacity(0.7),
+          color: const Color(0xFF2D3142).withValues(alpha: 0.7),
           height: 1.3,
         ),
       ),
@@ -403,11 +398,11 @@ class _WorkoutInstructions extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
-        color: const Color(0xFFFF6B6B).withOpacity(0.1),
+        color: const Color(0xFFFF6B6B).withValues(alpha: 0.1),
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: const Color(0xFFFF6B6B).withOpacity(0.1),
+            color: const Color(0xFFFF6B6B).withValues(alpha: 0.1),
             blurRadius: 8,
             offset: const Offset(0, 2),
           ),
@@ -462,11 +457,11 @@ class _NextWorkouts extends StatelessWidget {
             Container(
               padding: const EdgeInsets.all(6),
               decoration: BoxDecoration(
-                color: const Color(0xFF45B7D1).withOpacity(0.1),
+                color: const Color(0xFF45B7D1).withValues(alpha: 0.1),
                 borderRadius: BorderRadius.circular(16),
                 boxShadow: [
                   BoxShadow(
-                    color: const Color(0xFF45B7D1).withOpacity(0.1),
+                    color: const Color(0xFF45B7D1).withValues(alpha: 0.1),
                     blurRadius: 8,
                     offset: const Offset(0, 2),
                   ),
@@ -548,11 +543,12 @@ class _WorkoutNavigationItem extends StatelessWidget {
         child: Container(
           padding: const EdgeInsets.all(10),
           decoration: BoxDecoration(
-            color: const Color(0xFF45B7D1).withOpacity(0.1),
+
+            color: const Color(0xFF45B7D1).withValues(alpha: 0.1),
             borderRadius: BorderRadius.circular(20),
             boxShadow: [
               BoxShadow(
-                color: const Color(0xFF45B7D1).withOpacity(0.1),
+                color: const Color(0xFF45B7D1).withValues(alpha: 0.1),
                 blurRadius: 8,
                 offset: const Offset(0, 2),
               ),
@@ -567,7 +563,7 @@ class _WorkoutNavigationItem extends StatelessWidget {
                   borderRadius: BorderRadius.circular(16),
                   boxShadow: [
                     BoxShadow(
-                      color: const Color(0xFF45B7D1).withOpacity(0.2),
+                      color: const Color(0xFF45B7D1).withValues(alpha: 0.2),
                       blurRadius: 8,
                       offset: const Offset(0, 2),
                     ),
@@ -593,7 +589,7 @@ class _WorkoutNavigationItem extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 12,
                         fontWeight: FontWeight.w500,
-                        color: const Color(0xFF45B7D1).withOpacity(0.8),
+                        color: const Color(0xFF45B7D1).withValues(alpha: 0.8),
                       ),
                     ),
                     const SizedBox(height: 4),
@@ -612,7 +608,7 @@ class _WorkoutNavigationItem extends StatelessWidget {
                       '${workout.sets} sets • ${workout.repsRange}',
                       style: TextStyle(
                         fontSize: 12,
-                        color: const Color(0xFF2D3142).withOpacity(0.6),
+                        color: const Color(0xFF2D3142).withValues(alpha: 0.6),
                       ),
                     ),
                   ],
@@ -621,7 +617,7 @@ class _WorkoutNavigationItem extends StatelessWidget {
               Icon(
                 icon,
                 size: 16,
-                color: const Color(0xFF2D3142).withOpacity(0.3),
+                color: const Color(0xFF2D3142).withValues(alpha: 0.3),
               ),
             ],
           ),
@@ -644,13 +640,13 @@ class _Header extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.fromLTRB(8, 8, 20, 8),
         decoration: BoxDecoration(
-          color: Colors.white.withOpacity(0.9),
+          color: Colors.white.withValues(alpha: 0.9),
           borderRadius: const BorderRadius.vertical(
-            bottom: Radius.circular(24),
+            top: Radius.circular(24),
           ),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.05),
+              color: Colors.black.withValues(alpha: 0.05),
               blurRadius: 10,
               offset: const Offset(0, 2),
             ),
@@ -677,7 +673,7 @@ class _Header extends StatelessWidget {
                     'Day ${workout.day}',
                     style: TextStyle(
                       fontSize: 13,
-                      color: const Color(0xFF2D3142).withOpacity(0.6),
+                      color: const Color(0xFF2D3142).withValues(alpha: 0.6),
                     ),
                   ),
                 ],
@@ -714,9 +710,9 @@ class _BackButton extends StatelessWidget {
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
               colors: [
-                const Color(0xFF4ECDC4).withOpacity(0.1),
-                const Color(0xFF45B7D1).withOpacity(0.1),
-              ],
+              const Color(0xFF4ECDC4).withValues(alpha: 0.1),
+              const Color(0xFF45B7D1).withValues(alpha: 0.1),
+            ],
             ),
             borderRadius: BorderRadius.circular(16),
           ),
@@ -773,7 +769,7 @@ class _AskAIButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(16),
             boxShadow: [
               BoxShadow(
-                color: const Color(0xFF4ECDC4).withOpacity(0.3),
+                color: const Color(0xFF4ECDC4).withValues(alpha: 0.3),
                 blurRadius: 8,
                 offset: const Offset(0, 2),
               ),
@@ -785,7 +781,7 @@ class _AskAIButton extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.all(4),
                 decoration: BoxDecoration(
-                  color: Colors.white.withOpacity(0.2),
+                  color: Colors.white.withValues(alpha: 0.2),
                   shape: BoxShape.circle,
                 ),
                 child: const Icon(
@@ -887,7 +883,7 @@ class _FullScreenImageView extends StatelessWidget {
                 children: [
                   Container(
                     decoration: BoxDecoration(
-                      color: Colors.black.withOpacity(0.5),
+                      color: Colors.black.withValues(alpha: 0.5),
                       shape: BoxShape.circle,
                     ),
                     child: IconButton(
@@ -904,7 +900,7 @@ class _FullScreenImageView extends StatelessWidget {
                       vertical: 6,
                     ),
                     decoration: BoxDecoration(
-                      color: Colors.black.withOpacity(0.5),
+                      color: Colors.black.withValues(alpha: 0.5),
                       borderRadius: BorderRadius.circular(20),
                     ),
                     child: const Text(
@@ -924,4 +920,4 @@ class _FullScreenImageView extends StatelessWidget {
       ),
     ).animate().fadeIn(duration: 300.ms);
   }
-} 
+}

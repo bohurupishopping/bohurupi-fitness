@@ -36,7 +36,7 @@ class WorkoutList extends StatelessWidget {
                   ),
                   Container(
                     decoration: BoxDecoration(
-                      color: const Color(0xFF4ECDC4).withOpacity(0.1),
+                      color: const Color(0xFF4ECDC4).withValues(alpha: 0.1),
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: TextButton(
@@ -109,7 +109,7 @@ class _WorkoutListItem extends StatelessWidget {
                 borderRadius: BorderRadius.circular(24),
                 boxShadow: [
                   BoxShadow(
-                    color: color.withOpacity(0.1),
+                    color: color.withValues(alpha: 0.1),
                     blurRadius: 10,
                     offset: const Offset(0, 4),
                   ),
@@ -140,7 +140,7 @@ class _WorkoutListItem extends StatelessWidget {
                             borderRadius: BorderRadius.circular(20),
                             boxShadow: [
                               BoxShadow(
-                                color: color.withOpacity(0.2),
+                                color: color.withValues(alpha: 0.2),
                                 blurRadius: 8,
                                 offset: const Offset(0, 4),
                               ),
@@ -207,7 +207,7 @@ class _WorkoutListItem extends StatelessWidget {
                             vertical: 6,
                           ),
                           decoration: BoxDecoration(
-                            color: color.withOpacity(0.1),
+                            color: color.withValues(alpha: 0.1),
                             borderRadius: BorderRadius.circular(12),
                           ),
                           child: Row(
@@ -260,7 +260,7 @@ class _WorkoutListItem extends StatelessWidget {
           value,
           style: TextStyle(
             fontSize: 12,
-            color: const Color(0xFF2D3142).withOpacity(0.7),
+            color: const Color(0xFF2D3142).withValues(alpha: 0.7),
           ),
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
@@ -268,4 +268,4 @@ class _WorkoutListItem extends StatelessWidget {
       ],
     );
   }
-} 
+}

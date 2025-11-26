@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import '../models/workout.dart';
 import '../providers/workout_provider.dart';
 import '../theme/app_theme.dart';
@@ -33,7 +32,7 @@ class WorkoutCard extends StatelessWidget {
               borderRadius: BorderRadius.circular(20),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withOpacity(0.05),
+                  color: Colors.black.withValues(alpha: 0.05),
                   blurRadius: 10,
                   offset: const Offset(0, 4),
                 ),
@@ -135,7 +134,7 @@ class _StatusBadge extends StatelessWidget {
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.1),
+            color: Colors.black.withValues(alpha: 0.1),
             blurRadius: 4,
             offset: const Offset(0, 2),
           ),
@@ -238,4 +237,4 @@ class _InfoChip extends StatelessWidget {
       ),
     );
   }
-} 
+}
