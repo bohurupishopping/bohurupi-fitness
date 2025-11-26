@@ -588,5 +588,106 @@
         "Tips": "Tip: মুভমেন্ট ধীরে ধীরে করতে হবে, যেন পেশীতে ভালো চাপ পড়ে।",
         "Sets": 3,
         "Reps Range": "10-12"
+    },
+
+    {
+        "ID": "b_12",
+        "Day": "Back",
+        "Exercise": "Hyperextension (Back Extension)",
+        "Image": "https://example.com/hyperextension.gif",
+        "Instructions": "Muscle Targeted: লোয়ার ব্যাক (কোমরের নিচের অংশ)।\nমেশিনে পা আটকে কোমরের নিচের অংশ প্যাডে রাখুন। শরীর সামনের দিকে ঝুঁকিয়ে নিচু করুন এবং পিঠের পেশী ব্যবহার করে শরীর সোজা করুন।",
+        "Tips": "Tip: খুব বেশি উঁচুতে উঠবেন না, শরীর এক সরলরেখায় এলেই থামুন।",
+        "Sets": 3,
+        "Reps Range": "10-15"
+    },
+    {
+        "ID": "c_11",
+        "Day": "Chest",
+        "Exercise": "Dumbbell Pullover",
+        "Image": "https://example.com/dumbbell-pullover.gif",
+        "Instructions": "Muscle Targeted: বুক, ল্যাটিসিমাস ডর্সি এবং পাঁজরের পেশী।\nবেঞ্চে আড়াআড়ি বা লম্বালম্বি শুয়ে একটি ডাম্বেল দুই হাতে ধরে মাথার পেছনে নামান। বুক প্রসারিত করে ডাম্বেলটি আবার বুকের উপরে টেনে আনুন।",
+        "Tips": "Tip: কনুই সামান্য বাঁকা রাখুন এবং বুকের প্রসারণ অনুভব করুন।",
+        "Sets": 3,
+        "Reps Range": "10-12"
+    },
+    {
+        "ID": "lg_11",
+        "Day": "Leg",
+        "Exercise": "Romanian Deadlift (RDL)",
+        "Image": "https://example.com/rdl.gif",
+        "Instructions": "Muscle Targeted: হ্যামস্ট্রিং (উরুর পেছনের পেশী) এবং গ্লুটস।\nবারবেল বা ডাম্বেল হাতে নিয়ে সোজা হয়ে দাঁড়ান। হাঁটু সামান্য ভাঁজ রেখে কোমর পিছনের দিকে ঠেলে শরীর সামনের দিকে ঝুঁকুন। হ্যামস্ট্রিংয়ে টান অনুভব করলে আবার সোজা হন।",
+        "Tips": "Tip: পিঠ সর্বদা সোজা রাখুন, মেরুদণ্ড বাঁকাবেন না।",
+        "Sets": 3,
+        "Reps Range": "8-12"
+    },
+    {
+        "ID": "lg_12",
+        "Day": "Leg",
+        "Exercise": "Bulgarian Split Squat",
+        "Image": "https://example.com/bulgarian-split-squat.gif",
+        "Instructions": "Muscle Targeted: কোয়াড্রিসেপস এবং গ্লুটস।\nএকটি পা পেছনে বেঞ্চের উপর রাখুন এবং অন্য পা মাটিতে। সামনের পায়ের ওপর ভর দিয়ে নিচু হন এবং আবার উঠে দাঁড়ান।",
+        "Tips": "Tip: শরীরের ভারসাম্য বজায় রাখা কঠিন হলে শুরুতে কোনো সাপোর্ট ধরে করুন।",
+        "Sets": 3,
+        "Reps Range": "8-10/leg"
+    },
+    {
+        "ID": "bc_10",
+        "Day": "Biceps",
+        "Exercise": "Tricep Rope Pushdown",
+        "Image": "https://example.com/rope-pushdown.gif",
+        "Instructions": "Muscle Targeted: ত্রাইসেপস।\nক্যাবল মেশিনে রশি (Rope) সংযুক্ত করুন। কনুই শরীরের দুই পাশে স্থির রেখে রশি নিচের দিকে ঠেলুন এবং হাত দুপাশে ছড়িয়ে দিন।",
+        "Tips": "Tip: কনুই নড়াচড়া করবেন না, শুধুমাত্র হাতের নিচের অংশ মুভ করবে।",
+        "Sets": 3,
+        "Reps Range": "12-15"
+    },
+    {
+        "ID": "bc_11",
+        "Day": "Biceps",
+        "Exercise": "Preacher Curl",
+        "Image": "https://example.com/preacher-curl.gif",
+        "Instructions": "Muscle Targeted: বাইসেপস (আইসোলেশন)।\nপ্রিচার বেঞ্চে হাত রেখে বারবেল বা ডাম্বেল কার্ল করুন। এতে শরীরের অন্য কোনো অংশের সাহায্য ছাড়া শুধু বাইসেপস কাজ করে।",
+        "Tips": "Tip: হাত সম্পূর্ণ সোজা করার ঠিক আগ মুহূর্তে আবার উপরে তুলুন যাতে পেশীতে টান থাকে।",
+        "Sets": 3,
+        "Reps Range": "10-12"
+    },
+    {
+        "ID": "bc_12",
+        "Day": "Biceps",
+        "Exercise": "Concentration Curl",
+        "Image": "https://example.com/concentration-curl.gif",
+        "Instructions": "Muscle Targeted: বাইসেপস পিক (Peak)।\nবেঞ্চে বসে এক হাতে ডাম্বেল নিন এবং কনুই উরুর ভেতরের অংশে ঠেস দিয়ে কার্ল করুন।",
+        "Tips": "Tip: ওপরের দিকে তোলার সময় কনিষ্ঠ আঙুলটি সামান্য ঘুরিয়ে দিন (supinate)।",
+        "Sets": 3,
+        "Reps Range": "10-12/arm"
+    },
+    {
+        "ID": "sl_11",
+        "Day": "Shoulder",
+        "Exercise": "Dumbbell Shrugs",
+        "Image": "https://example.com/shrugs.gif",
+        "Instructions": "Muscle Targeted: ট্র্যাপিজিয়াস (Traps)।\nদুই হাতে ভারী ডাম্বেল নিয়ে সোজা হয়ে দাঁড়ান। হাত সোজা রেখে কাঁধ কানের দিকে উঁচুতে তুলুন, এক সেকেন্ড ধরে রেখে নামান।",
+        "Tips": "Tip: কাঁধ ঘোরাবেন না (Do not roll shoulders), শুধু উপরে এবং নিচে করুন।",
+        "Sets": 3,
+        "Reps Range": "12-15"
+    },
+    {
+        "ID": "sl_12",
+        "Day": "Shoulder",
+        "Exercise": "Reverse Pec Deck Fly",
+        "Image": "https://example.com/reverse-pec-deck.gif",
+        "Instructions": "Muscle Targeted: রিয়ার ডেল্টস (কাঁধের পেছনের অংশ)।\nপেক-ডেক মেশিনে উল্টো হয়ে বসুন। হ্যান্ডেল ধরে হাত পেছনের দিকে টানুন যতক্ষণ না কাঁধের পেছনের পেশী সংকুচিত হয়।",
+        "Tips": "Tip: খুব বেশি পেছনে টানবেন না, কাঁধের রেঞ্জ অব মোশনের মধ্যে থাকুন।",
+        "Sets": 3,
+        "Reps Range": "10-15"
+    },
+    {
+        "ID": "ab_10",
+        "Day": "Abs",
+        "Exercise": "Ab Wheel Rollout",
+        "Image": "https://fitnessprogramer.com/wp-content/uploads/2021/08/Barbell-Rollout.gif",
+        "Instructions": "Muscle Targeted: পুরো কোর এবং পেটের পেশী।\nহাঁটু গেড়ে বসে অ্যাব হুইল ধরে সামনে গড়িয়ে যান। শরীর মাটির কাছাকাছি নিয়ে আবার পেটের পেশী দিয়ে টেনে আগের অবস্থানে ফিরে আসুন।",
+        "Tips": "Tip: পিঠ বাঁকাবেন না, কোর শক্ত রাখুন। এটি একটি কঠিন অনুশীলন, সাবধানে করুন।",
+        "Sets": 3,
+        "Reps Range": "8-12"
     }
 ]

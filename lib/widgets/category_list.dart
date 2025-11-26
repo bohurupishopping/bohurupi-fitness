@@ -20,32 +20,32 @@ class CategoryList extends StatelessWidget {
       {
         'icon': Icons.fitness_center,
         'color': const Color(0xFF4ECDC4),
-        'name': 'Back'
+        'name': 'Back',
       },
       {
         'icon': Icons.sports_gymnastics,
         'color': const Color(0xFFFF6B6B),
-        'name': 'Chest'
+        'name': 'Chest',
       },
       {
         'icon': Icons.sports_handball,
         'color': const Color(0xFF45B7D1),
-        'name': 'Biceps'
+        'name': 'Biceps',
       },
       {
         'icon': Icons.accessibility_new,
         'color': const Color(0xFFFFA06B),
-        'name': 'Shoulder'
+        'name': 'Shoulder',
       },
       {
         'icon': Icons.directions_run,
         'color': const Color(0xFF9B51E0),
-        'name': 'Leg'
+        'name': 'Leg',
       },
       {
         'icon': Icons.fitness_center,
         'color': const Color(0xFF2D3142),
-        'name': 'Abs'
+        'name': 'Abs',
       },
     ];
 
@@ -53,18 +53,16 @@ class CategoryList extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: const EdgeInsets.fromLTRB(20, 0, 20, 12),
+          padding: const EdgeInsets.fromLTRB(24, 0, 24, 16),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Expanded(
+              Expanded(
                 child: Text(
                   'Categories',
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: Color(0xFF2D3142),
-                  ),
+                  style: Theme.of(
+                    context,
+                  ).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                 ),
@@ -72,16 +70,25 @@ class CategoryList extends StatelessWidget {
               TextButton(
                 onPressed: () {},
                 style: TextButton.styleFrom(
-                  padding: EdgeInsets.zero,
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 12,
+                    vertical: 8,
+                  ),
                   minimumSize: Size.zero,
                   tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                  backgroundColor: Theme.of(
+                    context,
+                  ).primaryColor.withValues(alpha: 0.1),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
                 ),
                 child: Text(
                   'View All',
                   style: TextStyle(
                     fontSize: 13,
-                    color: Colors.grey[600],
-                    fontWeight: FontWeight.w500,
+                    color: Theme.of(context).primaryColor,
+                    fontWeight: FontWeight.w600,
                   ),
                 ),
               ),
@@ -89,7 +96,7 @@ class CategoryList extends StatelessWidget {
           ),
         ),
         SizedBox(
-          height: 110,
+          height: 120,
           child: Consumer<WorkoutProvider>(
             builder: (context, provider, child) {
               return AnimationConfiguration.synchronized(
@@ -100,13 +107,13 @@ class CategoryList extends StatelessWidget {
                       controller: scrollController,
                       scrollDirection: Axis.horizontal,
                       physics: const BouncingScrollPhysics(),
-                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
                       itemCount: provider.uniqueDays.length,
                       itemBuilder: (context, index) {
                         final day = provider.uniqueDays[index];
                         final isSelected = day == provider.selectedDay;
                         final category = categories[index % categories.length];
-                        
+
                         return AnimationConfiguration.staggeredList(
                           position: index,
                           duration: const Duration(milliseconds: 375),
@@ -114,7 +121,7 @@ class CategoryList extends StatelessWidget {
                             horizontalOffset: 50.0,
                             child: FadeInAnimation(
                               child: Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
+                                padding: const EdgeInsets.only(right: 12),
                                 child: GestureDetector(
                                   onTap: () => provider.setSelectedDay(day),
                                   child: TweenAnimationBuilder(
@@ -127,44 +134,61 @@ class CategoryList extends StatelessWidget {
                                       return Transform.scale(
                                         scale: scale,
                                         child: Container(
-                                          width: 85,
+                                          width: 90,
                                           decoration: BoxDecoration(
-                                            color: isSelected ? category['color'] as Color : Colors.white,
-                                            borderRadius: BorderRadius.circular(24),
-                                            boxShadow: [
-                                              BoxShadow(
-                                                color: (category['color'] as Color).withValues(alpha: 0.2),
-                                                blurRadius: 8,
-                                                offset: const Offset(0, 4),
-                                              ),
-                                            ],
+                                            color: isSelected
+                                                ? (category['color'] as Color)
+                                                : Colors.white,
+                                            borderRadius: BorderRadius.circular(
+                                              28,
+                                            ),
+                                            border: Border.all(
+                                              color: isSelected
+                                                  ? Colors.transparent
+                                                  : Colors.black.withValues(
+                                                      alpha: 0.05,
+                                                    ),
+                                              width: 1,
+                                            ),
                                           ),
                                           child: Column(
-                                            mainAxisAlignment: MainAxisAlignment.center,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
                                             children: [
                                               Container(
-                                                padding: const EdgeInsets.all(10),
+                                                padding: const EdgeInsets.all(
+                                                  12,
+                                                ),
                                                 decoration: BoxDecoration(
                                                   color: isSelected
-                                                    ? Colors.white.withValues(alpha: 0.2)
-                                                    : (category['color'] as Color).withValues(alpha: 0.1),
+                                                      ? Colors.white.withValues(
+                                                          alpha: 0.2,
+                                                        )
+                                                      : (category['color']
+                                                                as Color)
+                                                            .withValues(
+                                                              alpha: 0.1,
+                                                            ),
                                                   shape: BoxShape.circle,
                                                 ),
                                                 child: Icon(
                                                   category['icon'] as IconData,
-                                                  color: isSelected 
-                                                    ? Colors.white
-                                                    : category['color'] as Color,
-                                                  size: 22,
+                                                  color: isSelected
+                                                      ? Colors.white
+                                                      : category['color']
+                                                            as Color,
+                                                  size: 24,
                                                 ),
                                               ),
-                                              const SizedBox(height: 8),
+                                              const SizedBox(height: 10),
                                               Text(
                                                 day,
                                                 style: TextStyle(
-                                                  fontSize: 13,
-                                                  fontWeight: FontWeight.w500,
-                                                  color: isSelected ? Colors.white : const Color(0xFF2D3142),
+                                                  fontSize: 14,
+                                                  fontWeight: FontWeight.w600,
+                                                  color: isSelected
+                                                      ? Colors.white
+                                                      : const Color(0xFF2D3142),
                                                 ),
                                                 maxLines: 1,
                                                 overflow: TextOverflow.ellipsis,

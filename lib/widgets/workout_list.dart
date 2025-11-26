@@ -9,10 +9,7 @@ import '../screens/workout_details_screen.dart';
 class WorkoutList extends StatelessWidget {
   final CacheManager? cacheManager;
 
-  const WorkoutList({
-    super.key,
-    required this.cacheManager,
-  });
+  const WorkoutList({super.key, required this.cacheManager});
 
   @override
   Widget build(BuildContext context) {
@@ -22,38 +19,34 @@ class WorkoutList extends StatelessWidget {
         return SliverList(
           delegate: SliverChildListDelegate([
             Padding(
-              padding: const EdgeInsets.fromLTRB(20, 24, 20, 16),
+              padding: const EdgeInsets.fromLTRB(24, 24, 24, 16),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text(
+                  Text(
                     'Top Workouts',
-                    style: TextStyle(
-                      fontSize: 20,
+                    style: Theme.of(context).textTheme.titleLarge?.copyWith(
                       fontWeight: FontWeight.bold,
-                      color: Color(0xFF2D3142),
                     ),
                   ),
-                  Container(
-                    decoration: BoxDecoration(
-                      color: const Color(0xFF4ECDC4).withValues(alpha: 0.1),
-                      borderRadius: BorderRadius.circular(12),
+                  TextButton(
+                    onPressed: () {},
+                    style: TextButton.styleFrom(
+                      foregroundColor: Theme.of(context).primaryColor,
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 16,
+                        vertical: 8,
+                      ),
+                      backgroundColor: Theme.of(
+                        context,
+                      ).primaryColor.withValues(alpha: 0.1),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
                     ),
-                    child: TextButton(
-                      onPressed: () {},
-                      style: TextButton.styleFrom(
-                        foregroundColor: const Color(0xFF4ECDC4),
-                        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                      ),
-                      child: const Text(
-                        'See all',
-                        style: TextStyle(
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
+                    child: const Text(
+                      'See all',
+                      style: TextStyle(fontWeight: FontWeight.w600),
                     ),
                   ),
                 ],
@@ -88,9 +81,9 @@ class _WorkoutListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = [
-      const Color(0xFF4ECDC4),
-      const Color(0xFFFF6B6B),
-      const Color(0xFF45B7D1),
+      const Color(0xFF6C63FF),
+      const Color(0xFF00BFA5),
+      const Color(0xFFFF6584),
       const Color(0xFFFFA06B),
     ];
     final color = colors[index % colors.length];
@@ -107,13 +100,10 @@ class _WorkoutListItem extends StatelessWidget {
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(24),
-                boxShadow: [
-                  BoxShadow(
-                    color: color.withValues(alpha: 0.1),
-                    blurRadius: 10,
-                    offset: const Offset(0, 4),
-                  ),
-                ],
+                border: Border.all(
+                  color: Colors.black.withValues(alpha: 0.05),
+                  width: 1,
+                ),
               ),
               child: Material(
                 color: Colors.transparent,
@@ -123,9 +113,8 @@ class _WorkoutListItem extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => WorkoutDetailsScreen(
-                          workout: workout,
-                        ),
+                        builder: (context) =>
+                            WorkoutDetailsScreen(workout: workout),
                       ),
                     );
                   },
@@ -134,17 +123,10 @@ class _WorkoutListItem extends StatelessWidget {
                     child: Row(
                       children: [
                         Container(
-                          width: 65,
-                          height: 65,
+                          width: 70,
+                          height: 70,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(20),
-                            boxShadow: [
-                              BoxShadow(
-                                color: color.withValues(alpha: 0.2),
-                                blurRadius: 8,
-                                offset: const Offset(0, 4),
-                              ),
-                            ],
                           ),
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(20),
@@ -153,19 +135,19 @@ class _WorkoutListItem extends StatelessWidget {
                               imageUrl: workout.image,
                               fit: BoxFit.cover,
                               placeholder: (context, url) => Container(
-                                color: Colors.grey[200],
+                                color: Colors.grey[100],
                                 child: const Center(
                                   child: CircularProgressIndicator(),
                                 ),
                               ),
                               errorWidget: (context, url, error) => Container(
-                                color: Colors.grey[200],
+                                color: Colors.grey[100],
                                 child: const Icon(Icons.error),
                               ),
                             ),
                           ),
                         ),
-                        const SizedBox(width: 12),
+                        const SizedBox(width: 16),
                         Expanded(
                           flex: 2,
                           child: Column(
@@ -173,25 +155,25 @@ class _WorkoutListItem extends StatelessWidget {
                             children: [
                               Text(
                                 workout.exercise,
-                                style: const TextStyle(
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w600,
-                                  color: Color(0xFF2D3142),
-                                ),
+                                style: Theme.of(context).textTheme.titleMedium
+                                    ?.copyWith(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w600,
+                                    ),
                                 maxLines: 2,
                                 overflow: TextOverflow.ellipsis,
                               ),
-                              const SizedBox(height: 4),
+                              const SizedBox(height: 6),
                               Wrap(
                                 spacing: 12,
                                 children: [
                                   _buildWorkoutStat(
-                                    icon: Icons.fitness_center,
+                                    icon: Icons.fitness_center_rounded,
                                     value: '${workout.sets} sets',
                                     color: color,
                                   ),
                                   _buildWorkoutStat(
-                                    icon: Icons.repeat,
+                                    icon: Icons.repeat_rounded,
                                     value: workout.repsRange,
                                     color: color,
                                   ),
@@ -202,32 +184,15 @@ class _WorkoutListItem extends StatelessWidget {
                         ),
                         const SizedBox(width: 8),
                         Container(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 10,
-                            vertical: 6,
-                          ),
+                          padding: const EdgeInsets.all(10),
                           decoration: BoxDecoration(
                             color: color.withValues(alpha: 0.1),
-                            borderRadius: BorderRadius.circular(12),
+                            shape: BoxShape.circle,
                           ),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Icon(
-                                Icons.play_arrow_rounded,
-                                color: color,
-                                size: 16,
-                              ),
-                              const SizedBox(width: 2),
-                              Text(
-                                'Start',
-                                style: TextStyle(
-                                  fontSize: 12,
-                                  color: color,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                              ),
-                            ],
+                          child: Icon(
+                            Icons.play_arrow_rounded,
+                            color: color,
+                            size: 20,
                           ),
                         ),
                       ],
@@ -250,17 +215,14 @@ class _WorkoutListItem extends StatelessWidget {
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Icon(
-          icon,
-          color: color,
-          size: 14,
-        ),
-        const SizedBox(width: 3),
+        Icon(icon, color: color, size: 14),
+        const SizedBox(width: 4),
         Text(
           value,
           style: TextStyle(
-            fontSize: 12,
+            fontSize: 13,
             color: const Color(0xFF2D3142).withValues(alpha: 0.7),
+            fontWeight: FontWeight.w500,
           ),
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
