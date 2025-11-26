@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
-import 'dart:ui';
-import '../services/workout_chat_service.dart';
 import '../models/workout.dart';
+import '../services/workout_chat_service.dart';
 
 class WorkoutChatModal extends StatefulWidget {
-  static const double _modalHeight = 0.75;
-  static const Duration _animationDuration = Duration(milliseconds: 200);
-
   final String workoutName;
   final Workout workout;
 
@@ -21,63 +17,65 @@ class WorkoutChatModal extends StatefulWidget {
 }
 
 class _WorkoutChatModalState extends State<WorkoutChatModal> {
-  static const List<String> _quickQuestions = [
-    'এই এক্সারসাইজটি কীভাবে সঠিকভাবে করবেন?',
-    'কোন মাংসপেশীগুলি কাজ করে?',
-    'সাধারণ ভুলগুলি কী কী?',
-    'নতুনদের জন্য টিপস?',
-    'এই এক্সারসাইজে উন্নতি করবেন কীভাবে?',
+  final TextEditingController _controller = TextEditingController();
+  final ScrollController _scrollController = ScrollController();
+  final List<Map<String, String>> _messages = [];
+  bool _isLoading = false;
+  late final WorkoutChatService _chatService;
+
+  // Pre-defined quick questions based on workout context
+  final List<String> _quickQuestions = [
+    "How do I do this correctly?",
+    "What muscles does this work?",
+    "Common mistakes to avoid?",
+    "Breathing technique?",
+    "Modifications for beginners?",
   ];
 
-  final TextEditingController _messageController = TextEditingController();
-  final WorkoutChatService _chatService = WorkoutChatService();
-  final List<Map<String, String>> _messages = [];
-  final ScrollController _scrollController = ScrollController();
-
-  bool _isLoading = false;
+  @override
+  void initState() {
+    super.initState();
+    _chatService = WorkoutChatService();
+  }
 
   @override
   void dispose() {
-    _messageController.dispose();
+    _controller.dispose();
     _scrollController.dispose();
     super.dispose();
   }
 
-  Future<void> _sendMessage([String? predefinedMessage]) async {
-    final message = predefinedMessage ?? _messageController.text.trim();
-    if (message.isEmpty) return;
+  Future<void> _sendMessage(String text) async {
+    if (text.trim().isEmpty) return;
 
     setState(() {
-      _messages.add({'text': message, 'isUser': 'true'});
+      _messages.add({'text': text, 'isUser': 'true'});
       _isLoading = true;
-      _messageController.clear();
     });
 
+    _controller.clear();
     _scrollToBottom();
 
     try {
-      final response = await _chatService.getChatResponse(
-        message,
-        widget.workout,
-      );
+      final response = await _chatService.getChatResponse(text, widget.workout);
+
       if (mounted) {
         setState(() {
           _messages.add({'text': response, 'isUser': 'false'});
+          _isLoading = false;
         });
         _scrollToBottom();
       }
     } catch (e) {
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('Error: $e'),
-            behavior: SnackBarBehavior.floating,
-          ),
-        );
-      }
-    } finally {
-      if (mounted) {
-        setState(() => _isLoading = false);
+        setState(() {
+          _messages.add({
+            'text': 'Sorry, I encountered an error. Please try again.',
+            'isUser': 'false',
+          });
+          _isLoading = false;
+        });
+        _scrollToBottom();
       }
     }
   }
@@ -87,7 +85,7 @@ class _WorkoutChatModalState extends State<WorkoutChatModal> {
       if (_scrollController.hasClients) {
         _scrollController.animateTo(
           _scrollController.position.maxScrollExtent,
-          duration: WorkoutChatModal._animationDuration,
+          duration: const Duration(milliseconds: 300),
           curve: Curves.easeOut,
         );
       }
@@ -96,55 +94,36 @@ class _WorkoutChatModalState extends State<WorkoutChatModal> {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      clipBehavior: Clip.none,
-      children: [
-        _buildModalContent(),
-        const Positioned(top: -36, left: 0, right: 0, child: _FloatingAIIcon()),
-      ],
-    );
-  }
-
-  Widget _buildModalContent() {
-    return ClipRRect(
-      borderRadius: const BorderRadius.vertical(top: Radius.circular(32)),
-      child: BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-        child: Container(
-          height:
-              MediaQuery.of(context).size.height *
-              WorkoutChatModal._modalHeight,
-          decoration: BoxDecoration(
-            color: Theme.of(
-              context,
-            ).scaffoldBackgroundColor.withValues(alpha: 0.95),
-            borderRadius: const BorderRadius.vertical(top: Radius.circular(32)),
-            border: Border.all(
-              color: Colors.white.withValues(alpha: 0.2),
-              width: 1.5,
+    return Padding(
+      padding: EdgeInsets.only(
+        bottom: MediaQuery.of(context).viewInsets.bottom,
+      ),
+      child: Container(
+        height: MediaQuery.of(context).size.height * 0.85,
+        decoration: const BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.vertical(top: Radius.circular(32)),
+        ),
+        child: Column(
+          children: [
+            _ChatHeader(
+              workoutName: widget.workoutName,
+              onClose: () => Navigator.pop(context),
             ),
-          ),
-          child: Column(
-            children: [
-              _ChatHeader(
-                workoutName: widget.workoutName,
-                onClose: () => Navigator.pop(context),
+            Expanded(
+              child: _ChatBody(
+                messages: _messages,
+                quickQuestions: _quickQuestions,
+                scrollController: _scrollController,
+                onQuestionTap: _sendMessage,
               ),
-              Expanded(
-                child: _ChatBody(
-                  messages: _messages,
-                  quickQuestions: _quickQuestions,
-                  scrollController: _scrollController,
-                  onQuestionTap: _sendMessage,
-                ),
-              ),
-              _ChatInput(
-                controller: _messageController,
-                isLoading: _isLoading,
-                onSend: _sendMessage,
-              ),
-            ],
-          ),
+            ),
+            _ChatInput(
+              controller: _controller,
+              isLoading: _isLoading,
+              onSend: () => _sendMessage(_controller.text),
+            ),
+          ],
         ),
       ),
     );
@@ -160,7 +139,7 @@ class _ChatHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.fromLTRB(24, 24, 24, 16),
+      padding: const EdgeInsets.fromLTRB(16, 16, 16, 12),
       decoration: BoxDecoration(
         border: Border(
           bottom: BorderSide(color: Colors.black.withValues(alpha: 0.05)),
@@ -176,25 +155,26 @@ class _ChatHeader extends StatelessWidget {
                 'AI Trainer Chat',
                 style: Theme.of(context).textTheme.titleLarge?.copyWith(
                   fontWeight: FontWeight.bold,
-                  fontSize: 20,
+                  fontSize: 18,
                 ),
               ),
-              const SizedBox(height: 4),
+              const SizedBox(height: 2),
               Text(
                 workoutName,
                 style: Theme.of(
                   context,
-                ).textTheme.bodyMedium?.copyWith(fontSize: 14),
+                ).textTheme.bodyMedium?.copyWith(fontSize: 13),
               ),
             ],
           ),
           IconButton(
             onPressed: onClose,
-            icon: const Icon(Icons.close_rounded),
+            icon: const Icon(Icons.close_rounded, size: 20),
             color: Theme.of(context).iconTheme.color,
             style: IconButton.styleFrom(
               backgroundColor: Colors.black.withValues(alpha: 0.05),
               padding: const EdgeInsets.all(8),
+              minimumSize: const Size(36, 36),
             ),
           ),
         ],
@@ -219,7 +199,7 @@ class _ChatBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 24),
+      padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Column(
         children: [
           if (messages.isEmpty) ...[
@@ -250,8 +230,8 @@ class _QuickQuestions extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Wrap(
-      spacing: 12,
-      runSpacing: 12,
+      spacing: 8,
+      runSpacing: 8,
       children: questions
           .map(
             (question) => _QuickQuestionButton(
@@ -275,10 +255,10 @@ class _QuickQuestionButton extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
         decoration: BoxDecoration(
-          color: Theme.of(context).primaryColor.withValues(alpha: 0.1),
-          borderRadius: BorderRadius.circular(20),
+          color: Theme.of(context).primaryColor.withValues(alpha: 0.08),
+          borderRadius: BorderRadius.circular(16),
           border: Border.all(
             color: Theme.of(context).primaryColor.withValues(alpha: 0.1),
           ),
@@ -287,7 +267,7 @@ class _QuickQuestionButton extends StatelessWidget {
           question,
           style: TextStyle(
             color: Theme.of(context).primaryColor,
-            fontSize: 13,
+            fontSize: 12,
             fontWeight: FontWeight.w600,
           ),
         ),
@@ -306,24 +286,24 @@ class _EmptyChat extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Container(
-            padding: const EdgeInsets.all(20),
+            padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
               color: Theme.of(context).primaryColor.withValues(alpha: 0.1),
               shape: BoxShape.circle,
             ),
             child: Icon(
               Icons.psychology_rounded,
-              size: 48,
+              size: 40,
               color: Theme.of(context).primaryColor.withValues(alpha: 0.5),
             ),
           ),
-          const SizedBox(height: 24),
+          const SizedBox(height: 16),
           Text(
             'Choose a question or ask anything\nabout this workout!',
             textAlign: TextAlign.center,
             style: Theme.of(
               context,
-            ).textTheme.bodyMedium?.copyWith(height: 1.5, fontSize: 16),
+            ).textTheme.bodyMedium?.copyWith(height: 1.4, fontSize: 14),
           ),
         ],
       ),
@@ -341,7 +321,7 @@ class _MessagesList extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.builder(
       controller: scrollController,
-      padding: const EdgeInsets.only(top: 24, bottom: 24),
+      padding: const EdgeInsets.only(top: 16, bottom: 16),
       itemCount: messages.length,
       itemBuilder: (context, index) {
         final message = messages[index];
@@ -360,83 +340,129 @@ class _ChatMessage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 20),
-      child: Row(
-        mainAxisAlignment: isUser
-            ? MainAxisAlignment.end
-            : MainAxisAlignment.start,
+    return Container(
+      width: double.infinity,
+      margin: const EdgeInsets.only(bottom: 16),
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: isUser
+            ? Theme.of(context).primaryColor.withValues(alpha: 0.05)
+            : Colors.transparent,
+        borderRadius: BorderRadius.circular(16),
+        border: isUser
+            ? Border.all(
+                color: Theme.of(context).primaryColor.withValues(alpha: 0.1),
+              )
+            : null,
+      ),
+      child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          if (!isUser) ...[
-            Container(
-              padding: const EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                color: Theme.of(context).primaryColor.withValues(alpha: 0.1),
-                shape: BoxShape.circle,
-              ),
-              child: Icon(
-                Icons.psychology_rounded,
-                color: Theme.of(context).primaryColor,
-                size: 18,
-              ),
-            ),
-            const SizedBox(width: 12),
-          ],
-          Flexible(
-            child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
-              decoration: BoxDecoration(
-                color: isUser ? Theme.of(context).primaryColor : Colors.white,
-                borderRadius: BorderRadius.only(
-                  topLeft: const Radius.circular(24),
-                  topRight: const Radius.circular(24),
-                  bottomLeft: Radius.circular(isUser ? 24 : 4),
-                  bottomRight: Radius.circular(isUser ? 4 : 24),
-                ),
-                border: Border.all(
+          Row(
+            children: [
+              Container(
+                padding: const EdgeInsets.all(6),
+                decoration: BoxDecoration(
                   color: isUser
-                      ? Colors.transparent
-                      : Colors.black.withValues(alpha: 0.05),
+                      ? Theme.of(context).primaryColor.withValues(alpha: 0.1)
+                      : const Color(0xFF4ECDC4).withValues(alpha: 0.1),
+                  shape: BoxShape.circle,
+                ),
+                child: Icon(
+                  isUser
+                      ? Icons.person_outline_rounded
+                      : Icons.psychology_rounded,
+                  size: 16,
+                  color: isUser
+                      ? Theme.of(context).primaryColor
+                      : const Color(0xFF4ECDC4),
                 ),
               ),
-              child: Text(
-                _formatMessage(text, isUser),
+              const SizedBox(width: 8),
+              Text(
+                isUser ? 'You' : 'AI Trainer',
                 style: TextStyle(
+                  fontSize: 12,
+                  fontWeight: FontWeight.bold,
                   color: isUser
-                      ? Colors.white
-                      : Theme.of(context).textTheme.bodyLarge?.color,
-                  fontSize: 15,
-                  height: 1.6,
+                      ? Theme.of(context).primaryColor
+                      : const Color(0xFF4ECDC4),
                 ),
               ),
-            ),
+            ],
           ),
-          if (isUser) const SizedBox(width: 40),
+          const SizedBox(height: 8),
+          isUser
+              ? Text(
+                  text,
+                  style: TextStyle(
+                    color: Theme.of(context).textTheme.bodyLarge?.color,
+                    fontSize: 14,
+                    height: 1.5,
+                  ),
+                )
+              : _buildFormattedMessage(context, text),
         ],
       ),
     );
   }
 
-  String _formatMessage(String text, bool isUser) {
-    if (isUser) return text;
+  Widget _buildFormattedMessage(BuildContext context, String text) {
+    final List<InlineSpan> spans = [];
+    final lines = text.split('\n');
+    final normalStyle = TextStyle(
+      color: Theme.of(context).textTheme.bodyLarge?.color,
+      fontSize: 14,
+      height: 1.6,
+    );
+    final boldStyle = normalStyle.copyWith(fontWeight: FontWeight.bold);
+    final headerStyle = normalStyle.copyWith(
+      fontSize: 16,
+      fontWeight: FontWeight.bold,
+      height: 1.4,
+    );
 
-    String formattedText = text
-        .replaceAll('**', '')
-        .replaceAll('•', '\n•')
-        .replaceAll('\n\n', '\n')
-        .trim();
+    for (int i = 0; i < lines.length; i++) {
+      String line = lines[i].trim();
+      if (line.isEmpty) {
+        if (i < lines.length - 1) spans.add(const TextSpan(text: '\n'));
+        continue;
+      }
 
-    final paragraphs = formattedText.split('\n');
+      // Handle Headers (###)
+      if (line.startsWith('###')) {
+        spans.add(
+          TextSpan(
+            text: '${line.replaceAll('#', '').trim()}\n',
+            style: headerStyle,
+          ),
+        );
+        continue;
+      }
 
-    return paragraphs
-        .map((paragraph) {
-          if (paragraph.startsWith('•')) {
-            return '  $paragraph';
-          }
-          return '$paragraph\n';
-        })
-        .join('');
+      // Handle Bullet points
+      if (line.startsWith('* ') || line.startsWith('- ')) {
+        line = '• ${line.substring(2)}';
+      }
+
+      // Parse Bold (**text**)
+      final parts = line.split('**');
+      for (int j = 0; j < parts.length; j++) {
+        if (j % 2 == 1) {
+          // Bold part
+          spans.add(TextSpan(text: parts[j], style: boldStyle));
+        } else {
+          // Normal part
+          spans.add(TextSpan(text: parts[j], style: normalStyle));
+        }
+      }
+
+      if (i < lines.length - 1) {
+        spans.add(const TextSpan(text: '\n'));
+      }
+    }
+
+    return RichText(text: TextSpan(children: spans));
   }
 }
 
@@ -454,9 +480,9 @@ class _ChatInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.fromLTRB(24, 16, 24, 32),
+      padding: const EdgeInsets.fromLTRB(16, 12, 16, 24),
       decoration: BoxDecoration(
-        color: Colors.white.withValues(alpha: 0.9),
+        color: Colors.white,
         border: Border(
           top: BorderSide(color: Colors.black.withValues(alpha: 0.05)),
         ),
@@ -465,32 +491,33 @@ class _ChatInput extends StatelessWidget {
         children: [
           Expanded(
             child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
+              height: 44,
               decoration: BoxDecoration(
                 color: Theme.of(context).scaffoldBackgroundColor,
-                borderRadius: BorderRadius.circular(28),
-                border: Border.all(
-                  color: Colors.black.withValues(alpha: 0.05),
-                  width: 1,
-                ),
+                borderRadius: BorderRadius.circular(22),
+                border: Border.all(color: Colors.black.withValues(alpha: 0.05)),
               ),
               child: TextField(
                 controller: controller,
                 decoration: InputDecoration(
                   hintText: 'Ask anything...',
                   border: InputBorder.none,
+                  isDense: true,
                   hintStyle: TextStyle(
                     color: Theme.of(
                       context,
                     ).textTheme.bodyMedium?.color?.withValues(alpha: 0.5),
-                    fontSize: 15,
+                    fontSize: 14,
                   ),
-                  contentPadding: const EdgeInsets.symmetric(vertical: 14),
+                  contentPadding: const EdgeInsets.symmetric(
+                    horizontal: 16,
+                    vertical: 12,
+                  ),
                 ),
               ),
             ),
           ),
-          const SizedBox(width: 12),
+          const SizedBox(width: 8),
           _SendButton(isLoading: isLoading, onPressed: onSend),
         ],
       ),
@@ -507,47 +534,26 @@ class _SendButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: 44,
+      height: 44,
       decoration: BoxDecoration(
         color: Theme.of(context).primaryColor,
-        borderRadius: BorderRadius.circular(20),
+        shape: BoxShape.circle,
       ),
       child: IconButton(
         onPressed: isLoading ? null : onPressed,
         icon: isLoading
             ? const SizedBox(
-                width: 20,
-                height: 20,
+                width: 18,
+                height: 18,
                 child: CircularProgressIndicator(
                   color: Colors.white,
                   strokeWidth: 2,
                 ),
               )
-            : const Icon(Icons.send_rounded),
+            : const Icon(Icons.send_rounded, size: 20),
         color: Colors.white,
-        padding: const EdgeInsets.all(12),
-      ),
-    );
-  }
-}
-
-class _FloatingAIIcon extends StatelessWidget {
-  const _FloatingAIIcon();
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Container(
-        padding: const EdgeInsets.all(16),
-        decoration: BoxDecoration(
-          color: Theme.of(context).primaryColor,
-          shape: BoxShape.circle,
-          border: Border.all(color: Colors.white, width: 4),
-        ),
-        child: const Icon(
-          Icons.psychology_rounded,
-          color: Colors.white,
-          size: 32,
-        ),
+        padding: EdgeInsets.zero,
       ),
     );
   }
