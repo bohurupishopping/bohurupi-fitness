@@ -10,15 +10,17 @@ class CacheService {
     _workoutImageCache = CacheManager(
       Config(
         'workout_images',
-        stalePeriod: const Duration(days: 7),
-        maxNrOfCacheObjects: 100,
+        stalePeriod: const Duration(days: 30),
+        maxNrOfCacheObjects: 500,
       ),
     );
   }
 
   CacheManager get workoutImageCache {
     if (_workoutImageCache == null) {
-      throw StateError('CacheService not initialized. Call initialize() first.');
+      throw StateError(
+        'CacheService not initialized. Call initialize() first.',
+      );
     }
     return _workoutImageCache!;
   }
@@ -26,4 +28,4 @@ class CacheService {
   Future<void> clearCache() async {
     await _workoutImageCache?.emptyCache();
   }
-} 
+}

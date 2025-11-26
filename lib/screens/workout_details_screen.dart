@@ -591,6 +591,7 @@ class _WorkoutNavigationItem extends StatelessWidget {
                             fit: BoxFit.cover,
                             cacheManager:
                                 CacheService.instance.workoutImageCache,
+                            memCacheWidth: 150,
                             placeholder: (context, url) => Container(
                               color: Colors.grey[100],
                               child: const Center(
